@@ -1,0 +1,13 @@
+{
+  "google": [
+    {
+      "id": "1IvGuKbHKaNuLRuA7NLgoyKduujNbdGCgwJDdEEhGSro",
+      "filepath": "src/data/doc.json"
+    },
+    {
+      "id": "1RyuCftNl29_xDwimfdDSELGktMet7TrCWZYll2AlM3c",
+      "gid": "0",
+      "filepath": "src/data/sheet.csv"
+    }
+  ]
+}
