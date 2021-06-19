@@ -1,9 +1,14 @@
-<section class="hero" />
+<section id="hero">
+  <h2>Hero</h2>
+</section>
 
 <style>
-  .hero {
+  #hero {
     width: 100%;
     height: 100vh;
-    background-color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
   }
 </style>

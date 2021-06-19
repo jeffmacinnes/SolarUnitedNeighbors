@@ -1,27 +1,112 @@
 :root {
+  /* Font vars */
+  --sans: "Roboto Condensed", Helvetica, sans-serif;
+  --serif: Georgia, Times, serif;
+
+  /* Position vars */
+  --z-bottom: -100;
+  --z-middle: 0;
+  --z-top: 100;
+  --z-overlay: 1000;
+
+  /* Color vars */
   --light: #ed8936;
   --dark: #d95738;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+/* uncomment for debugging */
+* {
+  border: solid 1px red;
 }
 
-html,
-body {
+/* CLASSES */
+
+.col-full {
+  width: 100%;
+}
+
+.col-wide {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 24px;
+}
+
+.col-medium {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 24px;
+}
+
+.height-full {
+  min-height: 100vh;
+}
+
+.center {
+  text-align: center;
+}
+
+/* SCROLL-SPECIFIC ELEMENTS */
+
+svelte-scroller-background-container {
+  pointer-events: all !important;
+}
+
+[slot="foreground"] section {
+  padding: 100vh 0 100vh 0;
+}
+
+[slot="foreground"] section + section {
+  padding: 0 0 100vh 0;
+}
+
+[slot="foreground"] section div {
+  padding: 12px;
   position: relative;
+}
+
+[slot="foreground"] section div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0.8;
+  z-index: -1;
 }
 
-body {
-  color: #333;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-    "Helvetica Neue", sans-serif;
+[slot="foreground"] section div p {
+  margin: 0;
+}
+
+[slot="foreground"] section div p + p {
+  margin-top: 30px;
+}
+
+[slot="foreground"] section div h2,
+[slot="foreground"] section div h3 {
+  margin: 10px 0 20px 0;
+}
+
+@media (min-width: 992px) {
+  .splitscreen svelte-scroller-background {
+    width: calc(100% - 480px) !important;
+    min-width: 65%;
+    margin: 0 0 0 auto;
+  }
+  .splitscreen [slot="foreground"] section div::before {
+    opacity: 0;
+  }
+  .splitscreen [slot="foreground"] section {
+    width: 480px;
+    max-width: 35%;
+    margin: 0 auto 0 0;
+    background-color: #fff;
+  }
+  .splitscreen [slot="foreground"] .col-medium {
+    width: 100%;
+    margin: 0;
+    padding: 0 30px;
+  }
 }

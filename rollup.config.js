@@ -1,6 +1,7 @@
 import svelte from "rollup-plugin-svelte-hot";
 import preprocess from "svelte-preprocess";
 import resolve from "@rollup/plugin-node-resolve";
+import urlResolve from "rollup-plugin-url-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svg from "rollup-plugin-svg";
 import json from "@rollup/plugin-json";
@@ -98,6 +99,7 @@ export default {
       browser: true,
       dedupe: ["svelte"],
     }),
+    urlResolve(),
     commonjs(),
 
     // allow imports of svg, json, csv, png/jpg/gif
