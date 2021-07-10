@@ -1,25 +1,4 @@
-# svelte starter template
-
-Boilerplate for getting up and running quickly with a svelte app tailored to data story-telling projects
-
-This template ~~steals~~, ahem, borrows heavily from The Pudding's svelte template: https://github.com/the-pudding/svelte-starter
-
-## Getting started
-
-Click the `Use this template` feature on the github page of this repo, OR
-
-```bash
-npx degit jeffmacinnes/svelteStarter my-app
-cd my-app
-```
-
-to copy the contents into a new project directory called `my-app`.
-
-Then, Install the dependencies...
-
-```bash
-npm i
-```
+# Texas Solar Homeowners & Savings Report
 
 ## Development
 

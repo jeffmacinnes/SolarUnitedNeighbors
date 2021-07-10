@@ -2,6 +2,7 @@ import svelte from "rollup-plugin-svelte-hot";
 import preprocess from "svelte-preprocess";
 import resolve from "@rollup/plugin-node-resolve";
 import urlResolve from "rollup-plugin-url-resolve";
+import includePaths from "rollup-plugin-includepaths";
 import commonjs from "@rollup/plugin-commonjs";
 import svg from "rollup-plugin-svg";
 import json from "@rollup/plugin-json";
@@ -73,7 +74,7 @@ export default {
       // a separate file - better for performance
       // NOTE when hot option is enabled, a blank file will be written to
       // avoid CSS rules conflicting with HMR injected ones
-      css: (css) => {
+      css: css => {
         css.write(isNollup ? "build/bundle.css" : "bundle.css");
       },
       hot: isHot && {
@@ -100,6 +101,9 @@ export default {
       dedupe: ["svelte"],
     }),
     urlResolve(),
+    includePaths({
+      paths: ["src"], // use abs paths for any imports that start in src dir
+    }),
     commonjs(),
 
     // allow imports of svg, json, csv, png/jpg/gif

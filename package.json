@@ -8,13 +8,16 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "archieml": "^0.4.2",
+    "d3": "^7.0.0",
     "feather-icons": "^4.28.0",
+    "layercake": "^4.1.0",
     "node-fetch": "^2.6.1",
     "nollup": "^0.13.13",
     "rollup": "^2.3.4",
     "rollup-plugin-execute": "^1.1.1",
     "rollup-plugin-hot": "^0.1.0",
     "rollup-plugin-image": "^1.0.2",
+    "rollup-plugin-includepaths": "^0.2.4",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.1.0",
     "rollup-plugin-svelte-hot": "^0.13.0",
@@ -24,11 +27,13 @@
     "sass": "^1.35.1",
     "shelljs": "^0.8.4",
     "svelte": "^3.0.0",
+    "svelte-loader": "^3.1.2",
     "svelte-preprocess": "^4.7.3",
     "svelte-scrollto": "^0.2.0"
   },
   "dependencies": {
     "@sveltejs/svelte-scroller": "^2.0.7",
+    "dayjs": "^1.10.6",
     "sirv-cli": "^1.0.0"
   },
   "scripts": {

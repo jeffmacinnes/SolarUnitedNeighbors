@@ -49,6 +49,7 @@
       font-family: var(--sans);
       font-weight: 300;
       text-transform: capitalize;
+      cursor: pointer;
     }
   }
 
