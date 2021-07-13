@@ -35,8 +35,7 @@
   $: yGridLocs = [0, ...$yScale.domain()].map(d => {
     return {
       radius: $yScale(d),
-      stroke: d === 0 ? "black" : "#ddd",
-      strokeDash: d !== 0,
+      class: d === 0 ? "major" : "minor",
     };
   });
 </script>
@@ -55,7 +54,7 @@
   <g class="axis x-axis">
     {#each xTickVals as tick, i}
       <g>
-        <line x1={tick.x1} x2={tick.x2} y1={tick.y1} y2={tick.y2} stroke="black" />
+        <line x1={tick.x1} x2={tick.x2} y1={tick.y1} y2={tick.y2} />
         <text
           transform="translate({tick.xText}, {tick.yText}) rotate({tick.textRotation})"
           text-anchor="middle">{tick.text}</text
@@ -66,16 +65,37 @@
 
   <!-- Y-axis -->
   <g class="y-grid">
-    {#each yGridLocs as { radius, stroke, strokeDash }}
+    {#each yGridLocs as yGrid}
       <circle
+        class={`y-grid-line ${yGrid.class}`}
         cx="0"
         cy="0"
-        r={radius}
+        r={yGrid.radius}
         fill="none"
-        {stroke}
-        stroke-dasharray={strokeDash ? "2" : "none"}
         clip-path="url(#cut-off-bottom)"
       />
     {/each}
   </g>
 </g>
+
+<style lang="scss">
+  .x-axis {
+    text {
+      fill: #555;
+    }
+
+    line {
+      stroke: #555;
+    }
+  }
+
+  .y-grid-line.major {
+    stroke: #555;
+    stroke-dasharray: 0;
+  }
+
+  .y-grid-line.minor {
+    stroke: #ccc;
+    stroke-dasharray: 2;
+  }
+</style>

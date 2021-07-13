@@ -5,7 +5,8 @@
   import { scaleBand } from "d3-scale";
   import { deg2rad } from "components/utils";
   import Axes from "components/DailyChart/Axes.svelte";
-  import DailyChartTest from "components/DailyChart/DailychartTest.svelte";
+  import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
+  import Net from "components/DailyChart/Net.svelte";
 
   import { chartStates } from "./chartStates";
 
@@ -27,24 +28,25 @@
   }
 
   // --- Scroll state
-  let offset, progress;
+  let index, offset, progress, count;
   let chartState = chartStates[0];
-  let index = [];
-  let indexPrev = [];
+  let indexPrev;
   onMount(() => {
-    indexPrev = [...index];
-    chartState = chartStates[index[0]];
+    indexPrev = index;
+    chartState = chartStates[index];
   });
 
-  $: if (index[0] != indexPrev[0]) {
+  $: if (index != indexPrev) {
     // update chart state on scroll state change
-    indexPrev[0] = index[0];
-    chartState = chartStates[index[0]];
+    indexPrev = index;
+    if (index < chartStates.length) {
+      chartState = chartStates[index];
+    }
   }
 </script>
 
 <section id="walk-through">
-  <Scroller threshold={0.85} bind:index={index[0]} bind:offset bind:progress>
+  <Scroller threshold={0.85} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">
         <LayerCake
@@ -57,8 +59,9 @@
           yDomain={[-6, 6]}
         >
           <Svg>
-            <DailyChartTest {chartState} selectedTs={null} />
+            <EnergyArcs {chartState} selectedTs={null} />
             <Axes {chartState} selectedTs={null} />
+            <Net {chartState} selectedTs={null} />
           </Svg>
         </LayerCake>
       </div>
@@ -68,6 +71,7 @@
       <section class="scroll-section">This is the first section.</section>
       <section class="scroll-section">This is the second section.</section>
       <section class="scroll-section">This is the third section.</section>
+      <section class="scroll-section">This is the fourth section.</section>
     </div>
   </Scroller>
 </section>
@@ -97,6 +101,7 @@
       height: auto;
       margin: 100vh auto;
       padding: 10px;
+      color: white;
       background-color: var(--light);
     }
   }
