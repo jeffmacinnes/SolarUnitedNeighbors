@@ -44,14 +44,14 @@
     // stagger add each element based on index position
     return {
       delay: index * 100,
-      css: t => `opacity: ${t}`,
+      css: t => `opacity: ${t > 0 ? 1 : 0}`,
     };
   };
   const buildOut = (node, { index = 0 }) => {
     // stagger remove each element based on index position. First in/Last out.
     return {
       delay: ($data.length - index) * 50,
-      css: t => `opacity: ${t}`,
+      css: t => `opacity: ${t < 1 ? 0 : 1}`,
     };
   };
 </script>

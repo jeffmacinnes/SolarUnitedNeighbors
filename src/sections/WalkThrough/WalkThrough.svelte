@@ -7,6 +7,7 @@
   import Axes from "components/DailyChart/Axes.svelte";
   import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
   import Net from "components/DailyChart/Net.svelte";
+  import Annotations from "components/DailyChart/Annotations.svelte";
 
   import { chartStates } from "./chartStates";
 
@@ -43,10 +44,43 @@
       chartState = chartStates[index];
     }
   }
+
+  let annotations = [
+    {
+      text: "Example text...",
+      top: "18%",
+      left: "30%",
+      arrows: [
+        {
+          clockwise: false, // true or false, defaults to true
+          source: {
+            anchor: "left-bottom", // can be `{left, middle, right},{top-middle-bottom}`
+            dx: -2,
+            dy: -7,
+          },
+          target: {
+            x: "28%",
+            y: "75%",
+          },
+        },
+        {
+          source: {
+            anchor: "right-bottom",
+            dy: -7,
+            dx: 5,
+          },
+          target: {
+            x: "68%",
+            y: "48%",
+          },
+        },
+      ],
+    },
+  ];
 </script>
 
 <section id="walk-through">
-  <Scroller threshold={0.85} bind:index bind:offset bind:progress bind:count>
+  <Scroller threshold={0.35} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">
         <LayerCake
@@ -63,6 +97,10 @@
             <Axes {chartState} selectedTs={null} />
             <Net {chartState} selectedTs={null} />
           </Svg>
+
+          <!-- <Html>
+            <Annotations {annotations} />
+          </Html> -->
         </LayerCake>
       </div>
     </div>
@@ -109,7 +147,7 @@
   .chart-container {
     width: 75vw;
     height: 50vh;
-    border: solid 1px red;
+    // border: solid 1px red;
   }
 
   .scroll-section {
