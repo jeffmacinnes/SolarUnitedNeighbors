@@ -3,11 +3,14 @@
   import Scroller from "components/common/Scroller.svelte";
   import { LayerCake, Svg, Html } from "layercake";
   import { scaleBand } from "d3-scale";
+  import { sum } from "d3-array";
   import { deg2rad } from "components/utils";
   import Axes from "components/DailyChart/Axes.svelte";
   import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
+  import DaylightArc from "components/DailyChart/DaylightArc.svelte";
   import Net from "components/DailyChart/Net.svelte";
   import NetLegend from "components/DailyChart/NetLegend.svelte";
+  import NetSumText from "components/DailyChart/NetSumText.svelte";
   import Annotations from "components/DailyChart/Annotations.svelte";
 
   import { chartStates } from "./chartStates";
@@ -15,19 +18,28 @@
   export let solarUtils;
 
   let sampleData = [];
+  let daylight = { sunrise: 6, sunset: 20 };
   $: {
     if (solarUtils.loaded) {
       // Generate sample data to use for the walk-through
-      const { generateMonthlyData } = solarUtils;
-      const panelSize = 6; // <-- hardcode inputs to generate a sample data set
-      const houseSize = 2; // 2br
+      const { generateMonthlyData, months } = solarUtils;
+      const panelSize = 8; // <-- hardcode inputs to generate a sample data set
+      const houseSize = 1; // 2br
       const peakTime = 7; // peak energy time
+      const monthIdx = 5; // month to sample from
 
       sampleData = generateMonthlyData(panelSize, houseSize, peakTime).filter(
-        d => d.monthIdx === 5 // filter sample data to single month
+        d => d.monthIdx === monthIdx // filter sample data to single month
       );
+
+      let { sunset, sunrise } = solarUtils.months.find(d => d.monthIdx == monthIdx);
+      daylight = {
+        sunset,
+        sunrise,
+      };
     }
   }
+  $: netSum = sum(sampleData, d => d.net);
 
   // --- Scroll state
   let index, offset, progress, count;
@@ -45,39 +57,6 @@
       chartState = chartStates[index];
     }
   }
-
-  let annotations = [
-    {
-      text: "Example text...",
-      top: "18%",
-      left: "30%",
-      arrows: [
-        {
-          clockwise: false, // true or false, defaults to true
-          source: {
-            anchor: "left-bottom", // can be `{left, middle, right},{top-middle-bottom}`
-            dx: -2,
-            dy: -7,
-          },
-          target: {
-            x: "28%",
-            y: "75%",
-          },
-        },
-        {
-          source: {
-            anchor: "right-bottom",
-            dy: -7,
-            dx: 5,
-          },
-          target: {
-            x: "68%",
-            y: "48%",
-          },
-        },
-      ],
-    },
-  ];
 </script>
 
 <section id="walk-through">
@@ -94,13 +73,15 @@
           yDomain={[-6, 6]}
         >
           <Svg>
+            <DaylightArc {chartState} {daylight} />
             <EnergyArcs {chartState} selectedTs={null} />
             <Axes {chartState} selectedTs={null} />
             <Net {chartState} selectedTs={null} />
           </Svg>
 
           <Html>
-            <NetLegend />
+            <NetLegend {chartState} />
+            <NetSumText {chartState} {netSum} delay={1200} />
           </Html>
         </LayerCake>
       </div>

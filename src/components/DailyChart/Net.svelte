@@ -2,10 +2,9 @@
   import { getContext } from "svelte";
   import { draw, fade } from "svelte/transition";
   import { linear } from "svelte/easing";
-  import { polar2cart } from "../utils.js";
   import { line } from "d3-shape";
-  import { interpolateRdBu } from "d3-scale-chromatic";
-  import { scaleDiverging } from "d3-scale";
+  import { polar2cart } from "../utils.js";
+  import { colorScale } from "./dailyChartUtils";
 
   export let chartState;
   export let selectedTs;
@@ -14,8 +13,6 @@
   const connectorLineFn = line()
     .x(d => polar2cart($yScale(d.net), $xScale(d.ts) + $xScale.bandwidth() / 2).x)
     .y(d => polar2cart($yScale(d.net), $xScale(d.ts) + $xScale.bandwidth() / 2).y);
-
-  const colorScale = scaleDiverging(t => interpolateRdBu(1 - t)).domain([-5, 0, 5]);
 
   $: showNet = chartState.net;
 
