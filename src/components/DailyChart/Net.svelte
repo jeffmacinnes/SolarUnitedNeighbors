@@ -1,8 +1,8 @@
 <script>
   import { getContext } from "svelte";
-  import { draw } from "svelte/transition";
+  import { draw, fade } from "svelte/transition";
   import { linear } from "svelte/easing";
-  import { polar2cart, rad2deg } from "../utils.js";
+  import { polar2cart } from "../utils.js";
   import { line } from "d3-shape";
   import { interpolateRdBu } from "d3-scale-chromatic";
   import { scaleDiverging } from "d3-scale";
@@ -25,30 +25,70 @@
     ...d,
   }));
 
+  $: netArrows = $data
+    .filter(d => d.usage - d.net > 1.4)
+    .map(d => ({
+      ...d,
+      x1: polar2cart($yScale(d.usage), $xScale(d.ts) + $xScale.bandwidth() / 2).x,
+      y1: polar2cart($yScale(d.usage), $xScale(d.ts) + $xScale.bandwidth() / 2).y,
+      x2: polar2cart($yScale(d.net + 1.2), $xScale(d.ts) + $xScale.bandwidth() / 2).x,
+      y2: polar2cart($yScale(d.net + 1.2), $xScale(d.ts) + $xScale.bandwidth() / 2).y,
+    }));
+
   // --- Animation fns
+  const inStepDuration = 100;
+  const outStepDuration = 50;
   const buildIn = (node, { index = 0 }) => {
     // stagger add each element based on index position
     return {
-      delay: index * 100,
+      delay: index * inStepDuration,
       css: t => `opacity: ${t > 0 ? 1 : 0}`,
     };
   };
   const buildOut = (node, { index = 0 }) => {
     // stagger remove each element based on index position. First in/Last out.
     return {
-      delay: ($data.length - index) * 50,
+      delay: ($data.length - index) * outStepDuration,
       css: t => `opacity: ${t < 1 ? 0 : 1}`,
     };
   };
 </script>
 
+<defs>
+  <marker
+    id="arrow"
+    viewBox="0,0,10,10"
+    refX="5"
+    refY="5"
+    markerWidth="5"
+    markerHeight="5"
+    orient="auto-start-reverse"
+  >
+    <path class="arrowhead" d="M0,0L0,10L10,5" />
+  </marker>
+</defs>
+
 <g transform="translate({$width / 2}, {$height})">
   {#if showNet}
+    <!-- Net Arrows -->
+    {#each netArrows as arrow, index}
+      <line
+        in:fade={{ delay: $data.length * inStepDuration }}
+        out:fade={{ delay: 0 }}
+        class="net-arrow"
+        x1={arrow.x1}
+        y1={arrow.y1}
+        x2={arrow.x2}
+        y2={arrow.y2}
+        marker-end="url(#arrow)"
+      />
+    {/each}
+
     <!-- Net Connector line -->
     <path
       class="net-connector-line"
-      in:draw={{ duration: $data.length * 100, easing: linear }}
-      out:draw={{ duration: $data.length * 50, easing: linear }}
+      in:draw={{ duration: $data.length * inStepDuration, easing: linear }}
+      out:draw={{ duration: $data.length * outStepDuration, easing: linear }}
       d={connectorLineFn($data)}
       fill="none"
       stroke-dasharray="6 2"
@@ -77,5 +117,16 @@
   .net-connector-line {
     stroke: #555;
     /* stroke-dasharray: 6 2; */
+  }
+
+  .arrowhead {
+    stroke: "none";
+    fill: #777;
+  }
+
+  .net-arrow {
+    stroke-width: 1;
+    stroke: #555;
+    stroke-dasharray: 3 1;
   }
 </style>

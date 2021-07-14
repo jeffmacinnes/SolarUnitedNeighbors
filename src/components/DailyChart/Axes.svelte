@@ -1,11 +1,11 @@
 <script>
   import { polar2cart, rad2deg } from "../utils.js";
   import dayjs from "dayjs";
-  import { getContext } from "svelte";
+  import { getContext, tick } from "svelte";
 
   export let selectedTs = null;
 
-  const { data, xScale, yScale, width, height } = getContext("LayerCake");
+  const { data, xScale, yScale, yDomain, width, height } = getContext("LayerCake");
 
   // Prep the hour labels
   $: xTickVals = $data
@@ -32,11 +32,34 @@
       };
     });
 
-  $: yGridLocs = [0, ...$yScale.domain()].map(d => {
+  $: yGridLocs = [0, ...$yDomain].map(d => {
     return {
       radius: $yScale(d),
       class: d === 0 ? "major" : "minor",
     };
+  });
+
+  $: yTickVals = $xScale.range().flatMap((xPos, xIdx) => {
+    const isLeftTicks = xIdx === 0;
+    return [0, ...$yDomain].map(yPos => {
+      let textAnchor, label;
+      if (isLeftTicks) {
+        textAnchor = yPos === 0 ? "middle" : Math.sign(yPos) === 1 ? "start" : "end";
+        label =
+          yPos === 0 ? yPos : Math.sign(yPos) === 1 ? `${yPos} kWh ⟵` : `⟶ ${Math.abs(yPos)} kWh`;
+      } else {
+        textAnchor = yPos === 0 ? "middle" : Math.sign(yPos) === 1 ? "end" : "start";
+        label =
+          yPos === 0 ? yPos : Math.sign(yPos) === 1 ? `⟶ ${yPos} kWh` : `${Math.abs(yPos)} kWh ⟵`;
+      }
+      return {
+        x: polar2cart($yScale(yPos * 1.15), xPos).x,
+        y: polar2cart($yScale(yPos * 1.15), xPos).y + 10,
+        anchor: textAnchor,
+        text: label,
+        yVal: yPos,
+      };
+    });
   });
 </script>
 
@@ -63,7 +86,7 @@
     {/each}
   </g>
 
-  <!-- Y-axis -->
+  <!-- Y-grid -->
   <g class="y-grid">
     {#each yGridLocs as yGrid}
       <circle
@@ -76,6 +99,29 @@
       />
     {/each}
   </g>
+
+  <!-- Y-axis labels -->
+  <g class="y-axis">
+    {#each yTickVals as tick, i}
+      <text
+        transform="translate({tick.x}, {tick.y})"
+        font-size="12px"
+        alignment-baseline="hanging"
+        text-anchor={tick.anchor}
+      >
+        {tick.text}
+        {#if tick.yVal !== 0}
+          <tspan font-style="italic" x="0" dy="25">
+            {#if Math.sign(tick.yVal) === 1}
+              usage
+            {:else}
+              generation
+            {/if}
+          </tspan>
+        {/if}
+      </text>
+    {/each}
+  </g>
 </g>
 
 <style lang="scss">
@@ -86,6 +132,13 @@
 
     line {
       stroke: #555;
+    }
+  }
+
+  .y-axis {
+    text {
+      fill: #555;
+      font-size: "6px";
     }
   }
 

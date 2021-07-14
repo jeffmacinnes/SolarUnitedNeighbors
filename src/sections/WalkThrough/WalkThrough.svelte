@@ -7,6 +7,7 @@
   import Axes from "components/DailyChart/Axes.svelte";
   import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
   import Net from "components/DailyChart/Net.svelte";
+  import NetLegend from "components/DailyChart/NetLegend.svelte";
   import Annotations from "components/DailyChart/Annotations.svelte";
 
   import { chartStates } from "./chartStates";
@@ -98,9 +99,9 @@
             <Net {chartState} selectedTs={null} />
           </Svg>
 
-          <!-- <Html>
-            <Annotations {annotations} />
-          </Html> -->
+          <Html>
+            <NetLegend />
+          </Html>
         </LayerCake>
       </div>
     </div>
@@ -147,7 +148,7 @@
   .chart-container {
     width: 75vw;
     height: 50vh;
-    // border: solid 1px red;
+    border: solid 1px red;
   }
 
   .scroll-section {
