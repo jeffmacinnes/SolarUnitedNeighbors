@@ -21,7 +21,6 @@ const fetchGoogle = async ({ id, gid }) => {
     const text = await response.text();
 
     if (gid) return text;
-
     const parsed = archieml.load(text);
     const str = JSON.stringify(parsed);
     return str;

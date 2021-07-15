@@ -1,7 +1,7 @@
 <script>
   import * as scroll from "svelte-scrollto";
 
-  const scrollTo = (element) => {
+  const scrollTo = element => {
     console.log(`scrolling to ${element}`);
     scroll.scrollTo({ element, duration: 1200 });
   };
@@ -23,8 +23,6 @@
 </div>
 
 <style lang="scss">
-  $color: #f9c321;
-
   #navbar {
     width: 100%;
     height: 50px;
@@ -35,26 +33,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, var(--dark) 0%, var(--light) 100%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
   }
 
   .links-container {
-    max-width: 50%;
+    max-width: 70%;
     display: flex;
     justify-content: space-between;
 
     div {
       display: inline-block;
-      padding: 0 10px;
-      font-family: var(--sans);
-      font-weight: 300;
-      text-transform: capitalize;
+      padding: 0 15px;
+      font-family: "Roboto Condensed";
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-transform: uppercase;
       cursor: pointer;
+      color: #555;
+      letter-spacing: 0.025rem;
+      transition: transform 150ms;
+
+      &:hover {
+        color: #4f6b79;
+        transform: translateY(-1px);
+      }
     }
   }
 
   h1 {
-    color: $color;
+    color: white;
+    font-family: "Roboto Condensed";
     margin: 0px;
   }
 </style>

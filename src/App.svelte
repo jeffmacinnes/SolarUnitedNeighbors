@@ -30,8 +30,7 @@
 </script>
 
 <Head />
-
-<Nav />
 <Hero />
-<WalkThrough {solarUtils} />
+<Nav />
 <Summary />
+<WalkThrough sectionText={docs.section2} {solarUtils} />

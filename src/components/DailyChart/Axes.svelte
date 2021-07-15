@@ -128,6 +128,7 @@
   .x-axis {
     text {
       fill: #555;
+      font-size: 1.4em;
     }
 
     line {

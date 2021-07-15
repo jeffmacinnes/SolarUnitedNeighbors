@@ -27,7 +27,7 @@
   $: showNet = chartState.net;
 </script>
 
-<div class="legend-container" style="transform: translate(0, {$height * 0.25}px);">
+<div class="legend-container" style="transform: translate(0, {$height * 0.5 - 130}px);">
   {#if !showNet}
     <div transition:fade class="mask" />
   {/if}
@@ -50,5 +50,10 @@
   #legend {
     padding-right: 30px;
     color: #555;
+  }
+
+  .title {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
+      Geneva, Verdana, sans-serif;
   }
 </style>

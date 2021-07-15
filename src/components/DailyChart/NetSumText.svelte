@@ -14,7 +14,7 @@
   <div
     in:fade={{ delay: delay }}
     class="net-sum-container"
-    style="transform: translate(0px, {$height * 0.7}px)"
+    style="transform: translate(0px, {$height - 125}px)"
   >
     <div class="sum">{Math.round(netSum)} (kWh)</div>
     <div class="units">daily net energy</div>
@@ -32,6 +32,7 @@
   }
 
   .sum {
+    font-family: "Roboto Condensed";
     font-size: 36px;
     font-weight: 700;
     padding: 10px;
