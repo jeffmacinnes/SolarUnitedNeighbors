@@ -1,0 +1,30 @@
+/* Define all fonts */
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../assets/fonts/RobotoCondensed-Regular.ttf") format("ttf"),
+    url("../assets/fonts/RobotoCondensed-Regular.ttf") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../assets/RobotoCondensed-Light.ttf") format("ttf"),
+    url("../assets/fonts/RobotoCondensed-Light.ttf") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../assets/RobotoCondensed-Bold.ttf") format("ttf"),
+    url("../assets/fonts/RobotoCondensed-Bold.ttf") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
