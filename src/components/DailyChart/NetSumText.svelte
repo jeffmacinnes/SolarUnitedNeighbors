@@ -16,7 +16,7 @@
     class="net-sum-container"
     style="transform: translate(0px, {$height - 125}px)"
   >
-    <div class="sum">{Math.round(netSum)} (kWh)</div>
+    <div class="sum">{Math.round(netSum)} kWh</div>
     <div class="units">daily net energy</div>
     <div class="line-break" />
   </div>
@@ -29,24 +29,26 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    color: #ccc;
   }
 
   .sum {
     font-family: "Roboto Condensed";
     font-size: 36px;
     font-weight: 700;
-    padding: 10px;
+    padding: 3px;
     color: var(--light);
   }
 
   .line-break {
     margin: 10px auto;
     border-top: solid 1px #555;
-    width: 100px;
+    width: 80px;
   }
 
   .units {
     font-size: 12px;
     color: #555;
+    font-style: italic;
   }
 </style>

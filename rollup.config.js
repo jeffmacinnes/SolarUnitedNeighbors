@@ -1,10 +1,11 @@
 import svelte from "rollup-plugin-svelte-hot";
 import preprocess from "svelte-preprocess";
+import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import urlResolve from "rollup-plugin-url-resolve";
 import includePaths from "rollup-plugin-includepaths";
 import commonjs from "@rollup/plugin-commonjs";
-import svg from "rollup-plugin-svg";
+import { svelteSVG } from "rollup-plugin-svelte-svg";
 import json from "@rollup/plugin-json";
 import dsv from "@rollup/plugin-dsv";
 import image from "rollup-plugin-image";
@@ -100,6 +101,11 @@ export default {
       browser: true,
       dedupe: ["svelte"],
     }),
+    replace({
+      // Required for use of Tippy.js
+      // "process.env.NODE_ENV": JSON.stringify("production"),
+      "process.env.NODE_ENV": JSON.stringify("development"),
+    }),
     urlResolve(),
     includePaths({
       paths: ["src"], // use abs paths for any imports that start in src dir
@@ -107,7 +113,7 @@ export default {
     commonjs(),
 
     // allow imports of svg, json, csv, png/jpg/gif
-    svg(),
+    svelteSVG(),
     json(),
     dsv(),
     image(),

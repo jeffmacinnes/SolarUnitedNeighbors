@@ -10,6 +10,7 @@
   import define from "https://api.observablehq.com/d/47b9ac88545c0712.js?v=3";
 
   export let chartState;
+  export let id = "legend-div"; // must name the id of the element you want to inject the legend into
 
   const { height } = getContext("LayerCake");
 
@@ -17,7 +18,7 @@
   let notebookModule;
   onMount(() => {
     notebookModule = new Runtime().module(define, name => {
-      if (name === "netLegend") return new Inspector(document.querySelector("#legend"));
+      if (name === "netLegend") return new Inspector(document.querySelector(`#${id}`));
     });
     notebookModule.redefine("legendWidth", 150);
     notebookModule.redefine("usageColor", usageColor);
@@ -31,7 +32,7 @@
   {#if !showNet}
     <div transition:fade class="mask" />
   {/if}
-  <div id="legend" />
+  <div class="legend" {id} />
 </div>
 
 <style lang="scss">
@@ -47,7 +48,7 @@
     height: 50px;
   }
 
-  #legend {
+  .legend {
     padding-right: 30px;
     color: #555;
   }

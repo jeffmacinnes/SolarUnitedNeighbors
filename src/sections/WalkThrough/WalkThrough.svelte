@@ -1,9 +1,12 @@
 <script>
   import { onMount } from "svelte";
+  import { tweened } from "svelte/motion";
+  import { cubicInOut } from "svelte/easing";
   import Scroller from "components/common/Scroller.svelte";
   import { LayerCake, Svg, Html } from "layercake";
   import { scaleBand } from "d3-scale";
-  import { sum } from "d3-array";
+  import { sum, range } from "d3-array";
+  import dayjs from "dayjs";
   import { deg2rad } from "components/utils";
   import Axes from "components/DailyChart/Axes.svelte";
   import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
@@ -18,8 +21,21 @@
   export let sectionText;
   export let solarUtils;
 
+  const scrollSteps = sectionText.steps;
+
+  // Set up data vars. The currentData tween MUST start with a datasets that matches structure of the real data
   let sampleDatasets = {};
-  let currentData = [];
+  let startingData = range(24).map(d => ({
+    ts: 0,
+    net: 0,
+    usage: 0,
+    generation: 0,
+    dayIdx: 156,
+    monthIdx: 6,
+    monthStr: "Jun",
+    date: dayjs("2019-06-01"),
+  }));
+  let currentData = tweened(startingData, { duration: 450, easing: cubicInOut });
   let daylight = { sunrise: 6, sunset: 20 };
 
   $: {
@@ -48,7 +64,8 @@
         d => d.monthIdx === monthIdx // filter sample data to single month
       );
 
-      currentData = sampleDatasets[chartStates[0].data];
+      // update currentData tween store with the first dataset
+      currentData.set(sampleDatasets[chartStates[0].data]);
 
       // set sunrise and sunset
       let { sunset, sunrise } = months.find(d => d.monthIdx == monthIdx);
@@ -58,7 +75,7 @@
       };
     }
   }
-  $: netSum = currentData ? sum(currentData, d => d.net) : 0;
+  $: netSum = $currentData ? sum($currentData, d => d.net) : 0;
 
   // --- Scroll state
   let index, offset, progress, count;
@@ -69,39 +86,37 @@
   });
 
   $: if (indexPrev !== index) {
-    console.log("Current section: " + index);
     // update chart state on scroll state change
     indexPrev = index;
     if (index < chartStates.length) {
       chartState = chartStates[index];
-      currentData = solarUtils.loaded ? sampleDatasets[chartState.data] : [];
+      currentData.set(solarUtils.loaded ? sampleDatasets[chartState.data] : startingData);
     }
   }
-  $: scrollSteps = sectionText.steps;
 </script>
 
-<section id="walk-through">
+<section id="walk-through" class="body-content">
   <Scroller threshold={0.65} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">
         <LayerCake
-          data={currentData}
+          data={$currentData}
           padding={{ bottom: 40, top: 20 }}
           xScale={scaleBand().align(0)}
           xRange={[-deg2rad(90), deg2rad(90)]}
-          xDomain={currentData.map(d => d.ts)}
+          xDomain={$currentData.map(d => d.ts)}
           yRange={[150, 270]}
           yDomain={[-6, 6]}
         >
           <Svg>
             <DaylightArc {chartState} {daylight} />
             <EnergyArcs {chartState} selectedTs={null} />
-            <Axes {chartState} selectedTs={null} />
+            <Axes selectedTs={null} />
             <Net {chartState} selectedTs={null} />
           </Svg>
 
           <Html>
-            <NetLegend {chartState} />
+            <NetLegend {chartState} id="walkthrough-legend" />
             <NetSumText {chartState} {netSum} delay={1200} />
           </Html>
         </LayerCake>
@@ -132,13 +147,14 @@
   }
 
   [slot="foreground"] {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     section {
-      width: 50%;
+      width: 60%;
       max-width: 500px;
       height: auto;
       margin: 50vh auto;
@@ -151,7 +167,7 @@
 
   .chart-container {
     margin-top: 10vh;
-    width: 75vw;
+    width: 100%;
     height: 100%;
     max-height: 400px;
   }

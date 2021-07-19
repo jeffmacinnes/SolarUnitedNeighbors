@@ -22,15 +22,26 @@
     ...d,
   }));
 
-  $: netArrows = $data
-    .filter(d => d.usage - d.net > 1.4)
-    .map(d => ({
+  $: netArrows = $data.map(d => {
+    const showArrow = d.usage - d.net > 1.4;
+    let start, end;
+    if (showArrow) {
+      start = polar2cart($yScale(d.usage), $xScale(d.ts) + $xScale.bandwidth() / 2);
+      end = polar2cart($yScale(d.net + 1.2), $xScale(d.ts) + $xScale.bandwidth() / 2);
+    } else {
+      start = polar2cart($yScale(0), $xScale(d.ts) + $xScale.bandwidth() / 2);
+      end = polar2cart($yScale(0), $xScale(d.ts) + $xScale.bandwidth() / 2);
+    }
+
+    return {
       ...d,
-      x1: polar2cart($yScale(d.usage), $xScale(d.ts) + $xScale.bandwidth() / 2).x,
-      y1: polar2cart($yScale(d.usage), $xScale(d.ts) + $xScale.bandwidth() / 2).y,
-      x2: polar2cart($yScale(d.net + 1.2), $xScale(d.ts) + $xScale.bandwidth() / 2).x,
-      y2: polar2cart($yScale(d.net + 1.2), $xScale(d.ts) + $xScale.bandwidth() / 2).y,
-    }));
+      x1: start.x,
+      y1: start.y,
+      x2: end.x,
+      y2: end.y,
+      showArrow,
+    };
+  });
 
   // --- Animation fns
   const inStepDuration = 100;
@@ -70,14 +81,14 @@
     <!-- Net Arrows -->
     {#each netArrows as arrow, index}
       <line
-        in:fade={{ delay: $data.length * inStepDuration }}
-        out:fade={{ delay: 0 }}
+        in:buildIn={{ index }}
+        out:buildOut={{ index }}
         class="net-arrow"
         x1={arrow.x1}
         y1={arrow.y1}
         x2={arrow.x2}
         y2={arrow.y2}
-        marker-end="url(#arrow)"
+        marker-end={`${arrow.showArrow ? "url(#arrow)" : null}`}
       />
     {/each}
 

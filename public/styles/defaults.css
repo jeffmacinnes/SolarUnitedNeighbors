@@ -22,3 +22,7 @@ body {
   color: #555;
   font-family: "Roboto";
 }
+
+.body-content {
+  padding: 0 50px;
+}

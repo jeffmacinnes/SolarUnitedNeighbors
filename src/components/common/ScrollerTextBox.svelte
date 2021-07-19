@@ -19,7 +19,6 @@
     width: 100%;
     max-width: 500px;
     height: auto;
-    // margin: 100vh auto;
     padding: 30px;
     background: #ffffff;
     border: 1px solid #424040;

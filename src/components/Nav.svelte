@@ -10,7 +10,7 @@
 <div id="navbar">
   <!-- Logo -->
   <div class="logo-container">
-    <h1>Texas Solar Savings Report</h1>
+    <h1>Placeholder</h1>
   </div>
 
   <!-- Links -->
