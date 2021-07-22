@@ -144,11 +144,12 @@
   <div class="seasonal-chart-container">
     <h3 class="_heading3 seasonal-chart-title">Monthly net energy</h3>
     <LayerCake
+      padding={{ top: 20, left: 100, right: 100 }}
       data={currentMonthlyData}
       xScale={scaleBand().paddingInner(0.05).align(0.5)}
       xDomain={currentMonthlyData.map(d => d.ts)}
       yScale={scaleBand().paddingInner(0.05).align(0.5)}
-      yDomain={range(12)}
+      yDomain={range(months.length)}
     >
       <Svg>
         <SeasonalChart {months} />
@@ -186,8 +187,7 @@
   .seasonal-chart-container {
     position: relative;
     width: 100%;
-    height: 400px;
-    max-height: 400px;
+    height: 250px;
     margin-top: 20px;
   }
 
