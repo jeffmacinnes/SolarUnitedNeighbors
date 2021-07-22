@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    color: #ccc;
   }
 
   .sum {
@@ -37,18 +36,18 @@
     font-size: 36px;
     font-weight: 700;
     padding: 3px;
-    color: var(--light);
+    color: var(--orange);
   }
 
   .line-break {
     margin: 10px auto;
-    border-top: solid 1px #555;
+    border-top: solid 1px var(--dGray);
     width: 80px;
   }
 
   .units {
     font-size: 12px;
-    color: #555;
+    color: var(--dGray);
     font-style: italic;
   }
 </style>

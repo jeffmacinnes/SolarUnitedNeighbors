@@ -119,11 +119,11 @@
 
 <style>
   .net-circle {
-    stroke: #555;
+    stroke: var(--dGray);
   }
 
   .net-connector-line {
-    stroke: #555;
+    stroke: var(--dGray);
     /* stroke-dasharray: 6 2; */
   }
 
@@ -134,7 +134,7 @@
 
   .net-arrow {
     stroke-width: 1;
-    stroke: #555;
+    stroke: var(--dGray);
     stroke-dasharray: 3 1;
   }
 </style>

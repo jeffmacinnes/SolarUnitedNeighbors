@@ -1,5 +1,6 @@
 <script>
   import * as scroll from "svelte-scrollto";
+  export let sectionNames;
 
   const scrollTo = element => {
     console.log(`scrolling to ${element}`);
@@ -15,10 +16,10 @@
 
   <!-- Links -->
   <div class="links-container">
-    <div on:click={() => scrollTo("#summary")}>Report Summary</div>
-    <div on:click={() => scrollTo("#walk-through")}>Key Factors</div>
-    <div on:click={() => scrollTo("#plan-comparison")}>Plan Comparison</div>
-    <div on:click={() => scrollTo("#resources")}>Resources</div>
+    <div on:click={() => scrollTo("#summary")}>{sectionNames[0]}</div>
+    <div on:click={() => scrollTo("#walk-through")}>{sectionNames[1]}</div>
+    <div on:click={() => scrollTo("#plan-comparison")}>{sectionNames[2]}</div>
+    <div on:click={() => scrollTo("#resources")}>{sectionNames[3]}</div>
   </div>
 </div>
 
@@ -34,7 +35,7 @@
     justify-content: space-between;
     align-items: center;
     background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, var(--dark) 0%, var(--light) 100%);
+    background: linear-gradient(90deg, var(--dOrange) 0%, var(--orange) 100%);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
   }
 
@@ -51,19 +52,19 @@
       font-weight: 500;
       text-transform: uppercase;
       cursor: pointer;
-      color: #555;
+      color: var(--dGray);
       letter-spacing: 0.025rem;
       transition: transform 150ms;
 
       &:hover {
-        color: #4f6b79;
-        transform: translateY(-1px);
+        // color: var(--lBlue);
+        transform: translateY(-1.5px);
       }
     }
   }
 
   h1 {
-    color: white;
+    color: var(--white);
     font-family: "Roboto Condensed";
     margin: 0px;
   }

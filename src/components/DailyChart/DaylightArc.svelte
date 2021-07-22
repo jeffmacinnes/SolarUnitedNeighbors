@@ -62,6 +62,6 @@
   .daylight-label {
     font-size: 12px;
     font-style: italic;
-    fill: #555;
+    fill: var(--dGray);
   }
 </style>

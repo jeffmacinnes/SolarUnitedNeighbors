@@ -8,6 +8,8 @@
   import { sum, range } from "d3-array";
   import dayjs from "dayjs";
   import { deg2rad } from "components/utils";
+  import SectionHeading from "components/common/SectionHeading.svelte";
+  import TextBlock from "components/common/TextBlock.svelte";
   import Axes from "components/DailyChart/Axes.svelte";
   import EnergyArcs from "components/DailyChart/EnergyArcs.svelte";
   import DaylightArc from "components/DailyChart/DaylightArc.svelte";
@@ -96,6 +98,8 @@
 </script>
 
 <section id="walk-through" class="body-content">
+  <SectionHeading section={sectionText.section} title={sectionText.subtitle} />
+  <TextBlock text={sectionText.overview} />
   <Scroller threshold={0.65} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">

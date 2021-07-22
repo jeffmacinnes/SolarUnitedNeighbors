@@ -43,14 +43,14 @@
 
   .mask {
     position: absolute;
-    background-color: white;
+    background-color: var(--white);
     width: 200px;
     height: 50px;
   }
 
   .legend {
     padding-right: 30px;
-    color: #555;
+    color: var(--dGray);
   }
 
   .title {

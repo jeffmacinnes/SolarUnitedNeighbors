@@ -1,6 +1,3 @@
-// import { interpolateRgb } from "d3-scale-chromatic";
-// import { scaleDiverging } from "d3-scale";
-
 import * as d3 from "d3";
 
 export const usageColor = "#2474ad";

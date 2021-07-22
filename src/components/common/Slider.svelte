@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="slider-icon-container">
-    <Icon name={icon} width="50px" height="40px" strokeWidth={1.5} stroke="#555" />
+    <Icon name={icon} width="50px" height="40px" strokeWidth={1.5} stroke="var(--dGray)" />
   </div>
 
   <div class="slider-container">
@@ -38,7 +38,7 @@
           name="help-circle"
           width="15px"
           height="20px"
-          stroke="#555"
+          stroke="var(--dGray)"
           strokeWidth={2}
         />
       </div>
@@ -65,7 +65,7 @@
 <style lang="scss">
   .container {
     display: flex;
-    padding: 10px 0;
+    padding: 8px 0;
     width: 100%;
   }
 

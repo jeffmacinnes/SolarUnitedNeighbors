@@ -1,23 +1,20 @@
 <script>
+  import SectionHeading from "components/common/SectionHeading.svelte";
+  import TextBlock from "components/common/TextBlock.svelte";
+  export let sectionText;
 </script>
 
 <section id="summary">
   <div class="body-content">
-    <h2>Summary Section</h2>
+    <SectionHeading section={sectionText.section} title={sectionText.subtitle} />
+    <TextBlock text={sectionText.textBlock1} />
   </div>
 </section>
 
-<style>
+<style lang="scss">
   #summary {
     width: 100%;
-    height: 100vh;
-    background-color: lightgray;
-  }
-
-  div {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    background-color: var(--white);
   }
 </style>

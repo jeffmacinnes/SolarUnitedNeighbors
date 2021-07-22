@@ -127,24 +127,24 @@
 <style lang="scss">
   .x-axis {
     text {
-      fill: #555;
+      fill: var(--dGray);
       font-size: 1.4em;
     }
 
     line {
-      stroke: #555;
+      stroke: var(--dGray);
     }
   }
 
   .y-axis {
     text {
-      fill: #555;
+      fill: var(--dGray);
       font-size: "6px";
     }
   }
 
   .y-grid-line.major {
-    stroke: #555;
+    stroke: var(--dGray);
     stroke-dasharray: 0;
   }
 

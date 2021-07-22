@@ -1,7 +1,7 @@
 :root {
   /* components can access these vars like 
     div {
-      color: var(--light);
+      color: var(--orange);
     }
   */
   /* Font vars */
@@ -17,8 +17,13 @@
   --z-overlay: 1000;
 
   /* Color vars */
-  --light: #ed8936;
-  --dark: #d95738;
+  --orange: #ed8936;
+  --dOrange: #d95738;
+  --charcoal: #2d3748;
+  --lBlue: #648590; /* or #EAF4F4 */
+  --dGray: #505050;
+  --green: #00a6a6; /* or #5CA4A9 */
+  --white: #fefefe;
 }
 
 /* uncomment for debugging */
@@ -37,7 +42,7 @@ html {
 
 body {
   position: relative;
-  color: #555;
+  color: var(--dGray);
 }
 
 *,
@@ -48,12 +53,77 @@ body {
   padding: 0;
 }
 
-/* CLASSES */
+/* --- CLASSES */
 .body-content {
-  padding: 0 50px;
+  padding: 0 20px;
   margin: 0 auto;
   width: 90vw;
   max-width: 900px;
+}
+
+.col-3 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "n content content";
+}
+
+/* Text classes */
+._heading1 {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 5.52rem;
+  line-height: 5.9rem;
+  color: var(--dGray);
+}
+
+._heading2 {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.79rem;
+  line-height: 4.4rem;
+  color: var(--orange);
+}
+
+._heading3 {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.3rem;
+  line-height: 2.9rem;
+  padding: 1rem 0;
+  color: var(--dGray);
+}
+
+._section-heading {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 2.9rem;
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+  color: var(--dGray);
+}
+
+._body-text {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 1.55;
+  color: var(--dGray);
+}
+
+._body-text-bold {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.55;
+  color: var(--dGray);
 }
 
 /* Tippy Tooltip theme styling.
@@ -61,13 +131,13 @@ See: https://atomiks.github.io/tippyjs/v6/themes/ */
 .tippy-box[data-theme~="solarUnited"] {
   background-color: white;
   padding: 15px;
-  font-size: 1.62rem;
+  font-size: 1.6rem;
   font-family: "Roboto";
   font-weight: 300;
   line-height: 1.5;
-  color: #555;
+  color: var(--dGray);
   border-radius: 3px;
-  border: solid 1px #555;
+  border: solid 1px var(--dGray);
   box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.12);
 }
 
@@ -76,24 +146,10 @@ svelte-scroller-background-container {
   pointer-events: all !important;
 }
 
-@media (min-width: 992px) {
-  .splitscreen svelte-scroller-background {
-    width: calc(100% - 480px) !important;
-    min-width: 65%;
-    margin: 0 0 0 auto;
-  }
-  .splitscreen [slot="foreground"] section div::before {
-    opacity: 0;
-  }
-  .splitscreen [slot="foreground"] section {
-    width: 480px;
-    max-width: 35%;
-    margin: 0 auto 0 0;
-    background-color: #fff;
-  }
-  .splitscreen [slot="foreground"] .col-medium {
-    width: 100%;
-    margin: 0;
-    padding: 0 30px;
+/* Responsivity */
+@media (max-width: 700px) {
+  .col-3 {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: "content";
   }
 }
