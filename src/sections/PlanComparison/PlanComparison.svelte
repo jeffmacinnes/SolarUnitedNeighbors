@@ -41,6 +41,10 @@
   let monthIdx = null;
   let tsIdx = null;
 
+  const handleMouse = e => {
+    monthIdx = e;
+  };
+
   $: {
     if (solarUtils.loaded) {
       /* Generate monthly dataset (generate data first day of each month month)
@@ -144,15 +148,16 @@
   <div class="seasonal-chart-container">
     <h3 class="_heading3 seasonal-chart-title">Monthly net energy</h3>
     <LayerCake
-      padding={{ top: 20, left: 100, right: 100 }}
+      padding={{ top: 0, left: 20, right: 20, bottom: 80 }}
       data={currentMonthlyData}
       xScale={scaleBand().paddingInner(0.05).align(0.5)}
+      xRange={[-270, 270]}
       xDomain={currentMonthlyData.map(d => d.ts)}
       yScale={scaleBand().paddingInner(0.05).align(0.5)}
       yDomain={range(months.length)}
     >
       <Svg>
-        <SeasonalChart {months} />
+        <SeasonalChart {months} {handleMouse} {monthIdx} />
       </Svg>
     </LayerCake>
   </div>
@@ -187,7 +192,7 @@
   .seasonal-chart-container {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 300px;
     margin-top: 20px;
   }
 
