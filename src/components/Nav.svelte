@@ -11,7 +11,7 @@
 <div id="navbar">
   <!-- Logo -->
   <div class="logo-container">
-    <h1>Placeholder</h1>
+    <h1>Texas <span>Solar Homeowners</span> Savings Report</h1>
   </div>
 
   <!-- Links -->
@@ -66,6 +66,11 @@
   h1 {
     color: var(--white);
     font-family: "Roboto Condensed";
+    letter-spacing: 0.15rem;
     margin: 0px;
+
+    span {
+      color: var(--lOrange);
+    }
   }
 </style>

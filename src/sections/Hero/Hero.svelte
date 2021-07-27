@@ -4,20 +4,24 @@
   import TitleCardBg from "./TitleCardBg.svelte";
   import TitleCardText from "./TitleCardText.svelte";
 
+  // parallax factors
   let y;
-
-  $: fgFactor = y * 0.3;
-  $: titleFactor = y * 0.55;
+  $: fgFactor = y * 0.4;
+  $: titleFactor = y * 0.63;
   $: bgFactor = y * 0.2;
 
-  $: console.log(y);
+  // Set the margin to postion the top of the title card
+  let innerH;
+  $: titleMarginTop = innerH / 2 - 300;
+
+  $: console.log(innerH);
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} bind:innerHeight={innerH} />
 <section id="hero">
   <div class="full-image bg" style="transform: translate(0, {bgFactor}px)" />
   <div class="body-content" style="transform: translate(0, {titleFactor}px)">
-    <div class="col-3 title-layer">
+    <div class="col-3 title-layer" style="margin-top: {titleMarginTop}px">
       <div class="title-card-container">
         <LayerCake padding={{ top: 0, left: 0 }}>
           <Svg>
@@ -42,16 +46,15 @@
 
   .title-layer {
     position: relative;
-    margin-top: 20%;
     height: 1200px;
     width: 100%;
+    // border: solid 1px red;
   }
 
   .title-card-container {
     grid-area: content;
     width: 100%;
     height: 100%;
-    border: solid 1px red;
   }
 
   .bg {
