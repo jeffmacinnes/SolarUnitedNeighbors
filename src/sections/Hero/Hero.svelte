@@ -13,13 +13,11 @@
   // Set the margin to postion the top of the title card
   let innerH;
   $: titleMarginTop = innerH / 2 - 300;
-
-  $: console.log(innerH);
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={innerH} />
 <section id="hero">
-  <div class="full-image bg" style="transform: translate(0, {bgFactor}px)" />
+  <div class="full-image bg" style="transform: translate(0, {bgFactor}px);" />
   <div class="body-content" style="transform: translate(0, {titleFactor}px)">
     <div class="col-3 title-layer" style="margin-top: {titleMarginTop}px">
       <div class="title-card-container">
