@@ -34,7 +34,6 @@
       };
     });
   $: radius = 9;
-  $: console.log("here", monthIdx);
 </script>
 
 <g transform="translate({$width / 2}, {0})">
@@ -110,9 +109,6 @@
   }
 
   text {
-    /* text-transform: capitalize;
-    font-family: "Roboto";
-    font-weight: 500; */
     font-size: 1.4rem;
     fill: var(--dGray);
   }

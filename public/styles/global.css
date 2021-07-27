@@ -17,8 +17,9 @@
   --z-overlay: 1000;
 
   /* Color vars */
+  --lOrange: #ffb84d;
   --orange: #ed8936;
-  --dOrange: #d95738;
+  --dOrange: #cd4c00; /* #d95738; */
   --charcoal: #2d3748;
   --lBlue: #648590; /* or #EAF4F4 */
   --dGray: #505050;
@@ -73,8 +74,9 @@ body {
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: bold;
-  font-size: 5.52rem;
-  line-height: 5.9rem;
+  font-size: 7.2rem;
+  line-height: 6.9rem;
+  letter-spacing: 0.33rem;
   color: var(--dGray);
 }
 

@@ -36,8 +36,8 @@
 
 <Head />
 
+<Hero />
 <div class="app-container">
-  <Hero />
   <Nav {sectionNames} />
   <Summary sectionText={docs.section1} />
   <WalkThrough sectionText={docs.section2} {solarUtils} />
@@ -48,5 +48,6 @@
 <style>
   .app-container {
     background-color: var(--white);
+    z-index: 10;
   }
 </style>
