@@ -4,12 +4,12 @@ export const sliderOpts = {
   houseSize: {
     sliderLabel: "Home size",
     min: 1,
-    max: 4,
+    max: 5,
     step: 0.1,
     pipstep: 10, // <-- place pip every [pipstep] steps
     pipFormat: v => {
       const idx = Math.floor(Number(v)) - 1;
-      const labels = ["1br", "2br", "3br", "4br+"];
+      const labels = ["2br", "3br", "4br", "5br", "6br+"];
       return labels[idx];
     },
     icon: "home",

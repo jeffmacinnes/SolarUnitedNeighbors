@@ -42,7 +42,7 @@
   <Summary sectionText={docs.section1} />
   <WalkThrough sectionText={docs.section2} {solarUtils} />
   <PlanComparison sectionText={docs.section3} {solarUtils} />
-  <Resources />
+  <Resources sectionText={docs.section4} />
 </div>
 
 <style>
