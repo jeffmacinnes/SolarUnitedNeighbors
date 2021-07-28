@@ -29,7 +29,7 @@ export const sliderOpts = {
   panelSize: {
     sliderLabel: "Solar panel output",
     min: 0,
-    max: 12,
+    max: 18,
     step: 1,
     pipstep: 3,
     pipFormat: v => (v === 0 ? v : `${v}kW`),
