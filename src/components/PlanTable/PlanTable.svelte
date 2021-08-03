@@ -5,6 +5,7 @@
 
   export let bills = [];
   export let plans = {};
+  export let planDefs;
 
   let tooltipText = "324";
 
@@ -12,8 +13,9 @@
   $: bills = bills.map(d => {
     const amount = d.billType === "annual" ? d.annualBill : d.monthlyBill;
 
-    // add the rate details for each plan
+    // add the rate details and tooltip for each plan
     let rates = [];
+    let planTooltip;
     if (Object.keys(plans).length > 0) {
       const planRates = plans[d.plan];
       switch (d.plan) {
@@ -26,6 +28,7 @@
               planRates.export * 100
             )}¢</span>`,
           ];
+          planTooltip = planDefs.find(p => p.plan === "1:1 Buyback").definition;
           break;
         case "noBuyback":
           rates = [
@@ -34,6 +37,7 @@
             )}¢</span>`,
             ``,
           ];
+          planTooltip = planDefs.find(p => p.plan === "No Buyback").definition;
           break;
         case "freeNights":
           rates = [
@@ -42,6 +46,7 @@
             )}¢</span>`,
             `9am-9pm`,
           ];
+          planTooltip = planDefs.find(p => p.plan === "Free Nights").definition;
           break;
       }
     }
@@ -49,8 +54,11 @@
       ...d,
       amount,
       rates,
+      planTooltip,
     };
   });
+
+  $: console.log("planTable", planDefs);
 </script>
 
 <div class="table-container">
@@ -67,7 +75,8 @@
             <div
               class="help-icon-container"
               use:tooltip={{
-                content: tooltipText,
+                content: bill.planTooltip,
+                allowHTML: true,
                 placement: "top-end",
                 delay: [250, 100],
                 theme: "solarUnited",

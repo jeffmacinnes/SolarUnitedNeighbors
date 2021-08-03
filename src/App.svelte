@@ -32,16 +32,18 @@
 
   // Get navigation section names
   $: sectionNames = docs["navigation"].map(d => d.title);
+
+  $: planDefs = docs.section1.planDefinitions;
 </script>
 
 <Head />
 
-<Hero />
+<Hero sectionText={docs.hero} />
 <div class="app-container">
   <Nav {sectionNames} />
   <Summary sectionText={docs.section1} />
   <WalkThrough sectionText={docs.section2} {solarUtils} />
-  <PlanComparison sectionText={docs.section3} {solarUtils} />
+  <PlanComparison sectionText={docs.section3} {planDefs} {solarUtils} />
   <Resources sectionText={docs.section4} />
 </div>
 

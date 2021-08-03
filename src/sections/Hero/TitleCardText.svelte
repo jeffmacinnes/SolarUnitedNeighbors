@@ -1,18 +1,15 @@
 <script>
   import { getContext } from "svelte";
+  export let title;
+  export let subtitle;
+
   const { containerWidth, containerHeight } = getContext("LayerCake");
 </script>
 
 <div class="title-container">
-  <div class="title _heading1">
-    Texas <span>Solar Homeowners</span> Savings Report
-  </div>
-
+  <div class="title _heading1">{@html title}</div>
   <div class="break" />
-
-  <div class="subtitle _heading2">
-    Navigating the energy market to find the best plan to maximize your savings
-  </div>
+  <div class="subtitle _heading2">{subtitle}</div>
 </div>
 
 <style lang="scss">
@@ -26,7 +23,7 @@
   .title {
     color: var(--white);
 
-    span {
+    :global(span) {
       color: var(--lOrange);
     }
   }

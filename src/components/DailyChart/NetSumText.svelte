@@ -4,6 +4,7 @@
 
   export let chartState;
   export let netSum;
+  export let currentMonthDisplay;
   export let delay = 0;
   const { height } = getContext("LayerCake");
 
@@ -17,7 +18,9 @@
     style="transform: translate(0px, {$height - 125}px)"
   >
     <div class="sum">{Math.round(netSum)} kWh</div>
-    <div class="units">daily net energy</div>
+    <div class="units">
+      average daily usage<br />{currentMonthDisplay !== null ? `in ${currentMonthDisplay}` : ""}
+    </div>
     <div class="line-break" />
   </div>
 {/if}
@@ -49,5 +52,6 @@
     font-size: 12px;
     color: var(--dGray);
     font-style: italic;
+    line-height: 1.3;
   }
 </style>

@@ -19,6 +19,7 @@
 
   export let solarUtils;
   export let sectionText;
+  export let planDefs;
 
   let currentDailyData = [];
   let currentMonthlyData = [];
@@ -40,6 +41,7 @@
   // Seasonal Variation chart vars (null if nothing selected)
   let monthIdx = null;
   let tsIdx = null;
+  let currentMonthDisplay = null;
 
   const handleMouse = e => {
     monthIdx = e;
@@ -55,23 +57,25 @@
       const monthlyBills = generateMonthlyBills(monthlyData);
       currentMonthlyData = monthlyData;
 
+      // set local access to the other relevant vars from the notebook
+      plans = solarUtils.plans;
+      months = solarUtils.months;
+
       // set data based on whether seasonal variation chart is interacted with or not
-      if (monthIdx) {
+      if (monthIdx !== null) {
         currentDailyData = monthlyData.filter(d => d.monthIdx === monthIdx);
         let thisMonth = months.find(d => d.monthIdx === monthIdx);
+        currentMonthDisplay = thisMonth.month;
         daylight = { sunrise: thisMonth.sunrise, sunset: thisMonth.sunset };
         bills = monthlyBills
           .find(d => d.monthIdx === monthIdx)
           .plans.map(d => ({ ...d, billType: "monthly" }));
       } else {
         currentDailyData = generateMeanData(monthlyData);
+        currentMonthDisplay = null;
         daylight = { sunrise: 6, sunset: 19 };
         bills = generateAnnualBills(monthlyBills).map(d => ({ ...d, billType: "annual" }));
       }
-
-      // set local access to the other relevant vars from the notebook
-      plans = solarUtils.plans;
-      months = solarUtils.months;
     } else {
       currentDailyData = [];
       currentMonthlyData = [];
@@ -113,7 +117,7 @@
       <!-- PLANS -->
       <h3 class="_heading3">Compare electric plans</h3>
       <div class="plan-table-container">
-        <PlanTable {bills} {plans} />
+        <PlanTable {bills} {plans} {planDefs} />
       </div>
     </div>
   </div>
@@ -139,7 +143,7 @@
 
       <Html>
         <NetLegend id="plancomparison-legend" {chartState} />
-        <NetSumText {chartState} {netSum} delay={1200} />
+        <NetSumText {chartState} {netSum} {currentMonthDisplay} delay={1200} />
       </Html>
     </LayerCake>
   </div>

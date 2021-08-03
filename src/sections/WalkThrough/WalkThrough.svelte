@@ -159,7 +159,7 @@
 
     section {
       width: 60%;
-      max-width: 500px;
+      max-width: 600px;
       height: auto;
       margin: 50vh auto;
 

@@ -38,22 +38,46 @@
     display: flex;
     flex-direction: column;
     grid-area: content;
+    position: relative;
+    padding: 4rem;
+    background-color: var(--lBlue);
+    border-radius: 4px;
+    border: solid 1px var(--white);
+    z-index: 1;
+    box-shadow: 9px 9px 13px 4px rgba(0, 0, 0, 0.12);
+
+    :after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 1.4rem;
+      left: 1.4rem;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      border: 1px solid var(--white);
+      border-radius: 4px;
+      background: var(--lBlue);
+    }
   }
 
   .resource {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    padding-bottom: 4rem;
 
     .link {
-      color: var(--green);
-      font-weight: 700;
+      color: var(--lOrange);
+      font-weight: 400;
       font-size: 2rem;
 
       &:hover {
-        opacity: 0.75;
+        color: var(--orange);
       }
+    }
+
+    .description {
+      color: var(--white);
     }
   }
 </style>

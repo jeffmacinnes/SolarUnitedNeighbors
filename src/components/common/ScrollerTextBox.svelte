@@ -17,14 +17,14 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     padding: 30px;
     background: #ffffff;
     border: 1px solid #424040;
     box-sizing: border-box;
     box-shadow: 9px 9px 13px 4px rgba(0, 0, 0, 0.12);
-    border-radius: 7px;
+    border-radius: 4px;
 
     p {
       font-family: "Roboto";

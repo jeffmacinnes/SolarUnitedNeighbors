@@ -58,21 +58,23 @@
         alignment-baseline="middle"
         x={$xScale(0) - radius * 2}
         y={$yScale(month.monthIdx) + $yScale.bandwidth() / 2}
-        opacity={!monthIdx ? 1 : monthIdx === month.monthIdx ? 1 : 0.3}>{month.dateStr}</text
+        opacity={monthIdx === null ? 1 : monthIdx === month.monthIdx ? 1 : 0.3}
+        >{month.dateStr}</text
       >
       <line
         x1={$xScale(0) - radius * 1.5}
         y1={$yScale(month.monthIdx) + $yScale.bandwidth() / 2}
         x2={$xScale(23) + radius * 1.5}
         y2={$yScale(month.monthIdx) + $yScale.bandwidth() / 2}
-        opacity={!monthIdx ? 1 : monthIdx === month.monthIdx ? 1 : 0}
+        opacity={monthIdx === null ? 1 : monthIdx === month.monthIdx ? 1 : 0}
       />
       <text
         text-anchor="start"
         alignment-baseline="middle"
         x={$xScale(23) + radius * 2}
         y={$yScale(month.monthIdx) + $yScale.bandwidth() / 2}
-        opacity={!monthIdx ? 1 : monthIdx === month.monthIdx ? 1 : 0.3}>{month.dateStr}</text
+        opacity={monthIdx === null ? 1 : monthIdx === month.monthIdx ? 1 : 0.3}
+        >{month.dateStr}</text
       >
     {/each}
 
@@ -93,7 +95,7 @@
         fill={colorScale(circle.net)}
         stroke-width="1"
         stroke="#777"
-        opacity={!monthIdx ? 1 : monthIdx === circle.monthIdx ? 1 : 0.3}
+        opacity={monthIdx === null ? 1 : monthIdx === circle.monthIdx ? 1 : 0.3}
       />
     {/each}
   </g>

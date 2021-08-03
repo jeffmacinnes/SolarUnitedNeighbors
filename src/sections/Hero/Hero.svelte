@@ -4,6 +4,8 @@
   import TitleCardBg from "./TitleCardBg.svelte";
   import TitleCardText from "./TitleCardText.svelte";
 
+  export let sectionText;
+
   // parallax factors
   let y;
   $: fgFactor = y * 0.4;
@@ -13,6 +15,8 @@
   // Set the margin to postion the top of the title card
   let innerH;
   $: titleMarginTop = innerH / 2 - 300;
+
+  $: console.log(sectionText);
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={innerH} />
@@ -27,7 +31,7 @@
           </Svg>
 
           <Html>
-            <TitleCardText />
+            <TitleCardText title={sectionText.title} subtitle={sectionText.subtitle} />
           </Html>
         </LayerCake>
       </div>
