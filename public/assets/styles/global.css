@@ -128,6 +128,25 @@ body {
   color: var(--dGray);
 }
 
+._quote-text {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.3rem;
+  line-height: 131.69%;
+  letter-spacing: -0.005em;
+  color: var(--green);
+}
+
+._caption-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: 0.02rem;
+}
+
 /* Tippy Tooltip theme styling.
 See: https://atomiks.github.io/tippyjs/v6/themes/ */
 .tippy-box[data-theme~="solarUnited"] {

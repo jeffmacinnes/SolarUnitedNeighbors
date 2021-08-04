@@ -24,8 +24,6 @@
     return { i, j };
   });
   $: cellVerticalPadding = cellScale.padding() * cellScale.bandwidth();
-
-  $: console.log(cells);
 </script>
 
 <filter id="dropshadow" height="130%">

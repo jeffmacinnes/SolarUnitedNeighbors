@@ -1,10 +1,6 @@
 <script>
   import SectionHeading from "components/common/SectionHeading.svelte";
   export let sectionText;
-
-  $: console.log(sectionText);
-
-  $: links = sectionText.resources.map(d => ({}));
 </script>
 
 <section id="resources" class="body-content">

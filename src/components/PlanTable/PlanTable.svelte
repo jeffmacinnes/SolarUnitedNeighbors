@@ -57,8 +57,6 @@
       planTooltip,
     };
   });
-
-  $: console.log("planTable", planDefs);
 </script>
 
 <div class="table-container">

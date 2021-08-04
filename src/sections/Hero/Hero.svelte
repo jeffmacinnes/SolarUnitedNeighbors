@@ -15,8 +15,6 @@
   // Set the margin to postion the top of the title card
   let innerH;
   $: titleMarginTop = innerH / 2 - 300;
-
-  $: console.log(sectionText);
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={innerH} />

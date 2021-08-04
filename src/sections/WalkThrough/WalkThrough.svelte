@@ -17,6 +17,7 @@
   import NetLegend from "components/DailyChart/NetLegend.svelte";
   import NetSumText from "components/DailyChart/NetSumText.svelte";
   import ScrollerTextBox from "components/common/ScrollerTextBox.svelte";
+  import Icon from "components/common/Icon.svelte";
 
   import { chartStates } from "./chartStates";
 
@@ -100,6 +101,13 @@
 <section id="walk-through" class="body-content">
   <SectionHeading section={sectionText.section} title={sectionText.subtitle} />
   <TextBlock text={sectionText.overview} />
+  <div class="col-3">
+    <div class="arrow-container">
+      <div class="pulsing-arrow">
+        <Icon name="chevrons-down" width="50px" height="20px" strokeWidth={2} stroke="white" />
+      </div>
+    </div>
+  </div>
   <Scroller threshold={0.65} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">
@@ -121,7 +129,7 @@
 
           <Html>
             <NetLegend {chartState} id="walkthrough-legend" />
-            <NetSumText {chartState} {netSum} delay={1200} />
+            <NetSumText {chartState} {netSum} currentMonthDisplay={null} delay={1200} />
           </Html>
         </LayerCake>
       </div>
@@ -174,5 +182,40 @@
     width: 100%;
     height: 100%;
     max-height: 400px;
+  }
+
+  .arrow-container {
+    grid-area: content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .pulsing-arrow {
+    background: rgba(#555, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(#ccc, 0.5);
+    animation: pulsing 2s infinite;
+  }
+
+  @keyframes pulsing {
+    0% {
+      transform: scale(0.8);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 15px rgba(#ccc, 0);
+    }
+    100% {
+      transform: scale(0.8);
+      box-shadow: 0 0 0 0 rgba(#ccc, 0);
+    }
   }
 </style>
