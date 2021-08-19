@@ -17,7 +17,6 @@
   import NetLegend from "components/DailyChart/NetLegend.svelte";
   import NetSumText from "components/DailyChart/NetSumText.svelte";
   import ScrollerTextBox from "components/common/ScrollerTextBox.svelte";
-  import Icon from "components/common/Icon.svelte";
 
   import { chartStates } from "./chartStates";
 
@@ -101,13 +100,6 @@
 <section id="walk-through" class="body-content">
   <SectionHeading section={sectionText.section} title={sectionText.subtitle} />
   <TextBlock text={sectionText.overview} />
-  <div class="col-3">
-    <div class="arrow-container">
-      <div class="pulsing-arrow">
-        <Icon name="chevrons-down" width="50px" height="20px" strokeWidth={2} stroke="white" />
-      </div>
-    </div>
-  </div>
   <Scroller threshold={0.65} bind:index bind:offset bind:progress bind:count>
     <div slot="background">
       <div class="chart-container">

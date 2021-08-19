@@ -37,7 +37,7 @@
             )}¢</span>`,
             ``,
           ];
-          planTooltip = planDefs.find(p => p.plan === "No Buyback").definition;
+          planTooltip = planDefs.find(p => p.plan === "Partial Buyback").definition;
           break;
         case "freeNights":
           rates = [
