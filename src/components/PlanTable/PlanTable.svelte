@@ -30,12 +30,14 @@
           ];
           planTooltip = planDefs.find(p => p.plan === "1:1 Buyback").definition;
           break;
-        case "noBuyback":
+        case "partialBuyback":
           rates = [
             `<i>import:</i> <span class="rate-text">${d3.format(".1f")(
               planRates.import * 100
             )}¢</span>`,
-            ``,
+            `<i>export:</i> <span class="rate-text">${d3.format(".1f")(
+              planRates.export * 100
+            )}¢</span>`,
           ];
           planTooltip = planDefs.find(p => p.plan === "Partial Buyback").definition;
           break;

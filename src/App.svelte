@@ -6,12 +6,13 @@
   import WalkThrough from "./sections/WalkThrough/WalkThrough.svelte";
   import PlanComparison from "./sections/PlanComparison/PlanComparison.svelte";
   import Resources from "./sections/Resources/Resources.svelte";
+  import Footer from "./sections/Footer/Footer.svelte";
   import Nav from "./components/Nav.svelte";
   import docs from "./data/doc.json";
 
   // Load the Observable runtime and inspector.
   import { Runtime } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-  import notebook from "https://api.observablehq.com/d/75836c71d23e67a3@1263.js?v=3";
+  import notebook from "https://api.observablehq.com/d/75836c71d23e67a3@1274.js?v=3";
   const module = new Runtime().module(notebook);
 
   let solarUtils = { loaded: false };
@@ -45,6 +46,7 @@
   <WalkThrough sectionText={docs.section2} {solarUtils} />
   <PlanComparison sectionText={docs.section3} {planDefs} {solarUtils} />
   <Resources sectionText={docs.section4} />
+  <Footer sectionText={docs.footer} />
 </div>
 
 <style>
