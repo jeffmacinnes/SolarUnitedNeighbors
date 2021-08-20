@@ -12,6 +12,7 @@
     "d3": "^7.0.0",
     "feather-icons": "^4.28.0",
     "layercake": "^4.1.0",
+    "lodash.debounce": "^4.0.8",
     "node-fetch": "^2.6.1",
     "nollup": "^0.13.13",
     "rollup": "^2.3.4",
