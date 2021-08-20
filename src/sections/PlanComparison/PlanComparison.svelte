@@ -34,9 +34,9 @@
   };
 
   // Slider Defaults
-  let houseSize = [0];
+  let houseSize = [3];
   let peakTime = [6];
-  let panelSize = [6];
+  let panelSize = [5];
 
   // Seasonal Variation chart vars (null if nothing selected)
   let monthIdx = null;

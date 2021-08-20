@@ -140,7 +140,14 @@
 <style lang="scss">
   #walk-through {
     width: 100%;
-    min-height: 100vh;
+  }
+
+  :global(.list) {
+    padding: 3rem;
+  }
+
+  :global(li) {
+    padding: 0.5rem 0;
   }
 
   [slot="background"] {
@@ -165,6 +172,10 @@
 
       &:first-of-type {
         margin: 80vh auto; // make first section lower down
+      }
+
+      &:last-of-type {
+        margin: 10vh auto;
       }
     }
   }

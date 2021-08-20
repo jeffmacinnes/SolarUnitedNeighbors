@@ -19,6 +19,8 @@
       link: "https://missiondata.io/",
     },
   ];
+
+  const currentYear = new Date().getFullYear();
 </script>
 
 <div class="footer-container body-content">
@@ -84,7 +86,7 @@
   </div>
 
   <div class="copyright _caption-text">
-    Copyright Ⓒ 2021 Solar United Neighbors. All Rights Reserved
+    {`Copyright Ⓒ ${currentYear} Solar United Neighbors. All Rights Reserved`}
   </div>
 </div>
 
