@@ -167,10 +167,29 @@ svelte-scroller-background-container {
   pointer-events: all !important;
 }
 
-/* Responsivity */
+/* ----- Responsivity -------- 
+  By putting in descending order of screen size, CSS precedence
+  takes place and you don't need to specify a min-width
+*/
+/* Tablet */
+@media (max-width: 1000px) {
+  ._heading1 {
+    font-size: 6.2rem;
+    line-height: 6rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 700px) {
   .col-3 {
     grid-template-columns: repeat(1, 1fr);
     grid-template-areas: "content";
+  }
+
+  ._heading1 {
+    font-size: 4rem;
+    line-height: 3.9rem;
+    letter-spacing: 0.2rem;
   }
 }

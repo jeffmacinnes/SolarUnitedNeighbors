@@ -40,4 +40,11 @@
     font-size: 3rem;
     line-height: 3.47rem;
   }
+
+  @media (max-width: 700px) {
+    .subtitle {
+      font-size: 2.2rem;
+      line-height: 2.6rem;
+    }
+  }
 </style>
