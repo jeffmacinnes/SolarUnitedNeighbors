@@ -35,9 +35,9 @@
   }
 
   .sum {
-    font-family: "Roboto Condensed";
-    font-size: 36px;
-    font-weight: 700;
+    font-family: "Poppins";
+    font-weight: bold;
+    font-size: 3rem;
     padding: 3px;
     color: var(--orange);
   }
@@ -49,9 +49,10 @@
   }
 
   .units {
-    font-size: 12px;
+    font-family: "Poppins";
+    font-size: 11px;
     color: var(--dGray);
-    font-style: italic;
+    font-style: normal;
     line-height: 1.3;
   }
 </style>

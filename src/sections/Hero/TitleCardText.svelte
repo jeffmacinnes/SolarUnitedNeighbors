@@ -37,8 +37,8 @@
 
   .subtitle {
     color: var(--lOrange);
-    font-size: 3rem;
-    line-height: 3.47rem;
+    font-size: 2.8rem;
+    line-height: 3.6rem;
   }
 
   @media (max-width: 700px) {

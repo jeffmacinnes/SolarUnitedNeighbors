@@ -7,8 +7,6 @@
   export let plans = {};
   export let planDefs;
 
-  let tooltipText = "324";
-
   $: billType = bills.length > 0 ? bills[0].billType : "annual";
   $: bills = bills.map(d => {
     const amount = d.billType === "annual" ? d.annualBill : d.monthlyBill;
@@ -65,8 +63,9 @@
   <table>
     <tr>
       <th>Plan</th>
-      <th>Rates (per kWh)</th>
-      <th>Cost (per {billType === "annual" ? "year" : "month"})</th>
+      <th>Rates <br /><span class="units">(per kWh)</span></th>
+      <th>Cost <br /><span class="units">(per {billType === "annual" ? "year" : "month"})</span></th
+      >
     </tr>
     {#each bills as bill}
       <tr class="plan-row {!bill.isCheapest ? 'faded' : ''}">
@@ -92,7 +91,7 @@
                 strokeWidth={2}
               />
             </div>
-            <div class="_body-text-bold">
+            <div class="plan-name">
               {bill.planDisplay}
             </div>
           </div>
@@ -120,7 +119,7 @@
   }
 
   th {
-    font-family: "Roboto Condensed";
+    font-family: "Poppins";
     font-weight: 700;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -129,6 +128,11 @@
     padding: 3px 0px;
     &:first-of-type {
       padding: 10px 10px;
+    }
+
+    .units {
+      font-size: 0.9rem;
+      font-weight: bold;
     }
   }
 
@@ -152,7 +156,6 @@
   }
 
   .plan-row {
-    width: 100px;
     height: 50px;
     padding: 10px;
     margin: 10px;
@@ -169,12 +172,17 @@
       align-items: center;
     }
 
+    .plan-name {
+      font-family: "Poppins";
+      font-size: 1.7rem;
+    }
+
     .help-icon-container {
       cursor: pointer;
     }
 
     * {
-      padding-right: 5px;
+      padding-right: 3px;
     }
   }
 
@@ -191,9 +199,9 @@
 
     .amount-container {
       padding: 5px 10px;
-      font-family: "Roboto";
+      font-family: "Calistoga";
       font-style: normal;
-      font-weight: 700;
+      // font-weight: 700;
       font-size: 2rem;
       display: flex;
       align-items: center;

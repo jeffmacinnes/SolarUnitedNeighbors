@@ -99,13 +99,12 @@
     div {
       display: inline-block;
       padding: 0 15px;
-      font-family: "Roboto Condensed";
+      font-family: "Poppins";
       font-size: 1.4rem;
       font-weight: 500;
       text-transform: uppercase;
       cursor: pointer;
       color: var(--dGray);
-      letter-spacing: 0.025rem;
       transition: transform 150ms;
 
       &:hover {
@@ -117,7 +116,7 @@
 
   h1 {
     color: var(--white);
-    font-family: "Roboto Condensed";
+    font-family: "Calistoga";
     letter-spacing: 0.15rem;
     margin: 0px;
 
@@ -137,7 +136,7 @@
 
     .mobile-menu-link {
       text-transform: uppercase;
-      font-family: "Roboto Condensed";
+      font-family: "Poppins";
       font-size: 1.9rem;
       font-weight: light;
       padding: 2rem;

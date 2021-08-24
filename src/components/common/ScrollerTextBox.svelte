@@ -27,10 +27,10 @@
     border-radius: 4px;
 
     p {
-      font-family: "Roboto";
+      font-family: "Poppins";
       font-style: normal;
       font-weight: 300;
-      font-size: 22px;
+      font-size: 2rem;
       margin: 0px;
       line-height: 150%;
     }

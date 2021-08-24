@@ -34,8 +34,7 @@
       alt={sectionText.figures.find(p => p.fig === "2").alt}
     />
 
-    <!-- Figure 2 Section -->
-
+    <!-- Figure 3 Section -->
     <div class="divider" />
     <TextBlock text={sectionText.textBlock4} />
     <Figure

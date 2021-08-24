@@ -5,10 +5,10 @@
     }
   */
   /* Font vars */
-  --sans: "Roboto Condensed", Helvetica, sans-serif;
-  --serif: Georgia, Times, serif;
+  --sans: "Poppins", Helvetica, sans-serif;
+  --serif: "Calistoga", Georgia, Times, serif;
 
-  --body: "Roboto", Helvetica, sans-serif;
+  --body: "Poppins", Helvetica, sans-serif;
 
   /* Position vars */
   --z-bottom: -100;
@@ -22,7 +22,7 @@
   --dOrange: #cd4c00; /* #d95738; */
   --charcoal: #2d3748;
   --lBlue: #648590; /* or #EAF4F4 */
-  --dGray: #505050;
+  --dGray: #414141;
   --green: #00a6a6; /* or #5CA4A9 */
   --white: #fefefe;
 }
@@ -71,26 +71,25 @@ body {
 
 /* Text classes */
 ._heading1 {
-  font-family: "Roboto Condensed";
+  font-family: "Calistoga";
   font-style: normal;
-  font-weight: bold;
-  font-size: 7.2rem;
+  /* font-weight: bold; */
+  font-size: 6.9rem;
   line-height: 6.9rem;
-  letter-spacing: 0.33rem;
   color: var(--dGray);
 }
 
 ._heading2 {
-  font-family: "Roboto Condensed";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
-  font-size: 3.79rem;
-  line-height: 4.4rem;
+  font-size: 3.6rem;
+  line-height: 4rem;
   color: var(--orange);
 }
 
 ._heading3 {
-  font-family: "Roboto Condensed";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: bold;
   font-size: 2.3rem;
@@ -100,7 +99,7 @@ body {
 }
 
 ._section-heading {
-  font-family: "Roboto Condensed";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: bold;
   font-size: 1.6rem;
@@ -111,26 +110,26 @@ body {
 }
 
 ._body-text {
-  font-family: "Roboto";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 300;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   line-height: 1.55;
   color: var(--dGray);
 }
 
 ._body-text-bold {
-  font-family: "Roboto";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   line-height: 1.55;
   color: var(--dGray);
 }
 
 ._quote-text {
-  font-family: Roboto;
-  font-style: italic;
+  font-family: "Calistoga";
+  font-style: normal;
   font-weight: 500;
   font-size: 2.3rem;
   line-height: 131.69%;
@@ -139,7 +138,7 @@ body {
 }
 
 ._caption-text {
-  font-family: Roboto;
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 100;
   font-size: 1.4rem;
@@ -153,7 +152,7 @@ See: https://atomiks.github.io/tippyjs/v6/themes/ */
   background-color: white;
   padding: 15px;
   font-size: 1.6rem;
-  font-family: "Roboto";
+  font-family: "Poppins";
   font-weight: 300;
   line-height: 1.5;
   color: var(--dGray);

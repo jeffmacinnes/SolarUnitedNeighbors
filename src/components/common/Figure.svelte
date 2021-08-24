@@ -26,10 +26,10 @@
   }
 
   .title {
-    margin-bottom: 20px;
-    font-family: "Roboto Condensed";
+    margin-bottom: 10px;
+    font-family: "Poppins";
     font-weight: bold;
     color: var(--lBlue);
-    font-size: 2.3rem;
+    font-size: 1.9rem;
   }
 </style>

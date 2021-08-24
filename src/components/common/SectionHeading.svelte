@@ -13,6 +13,6 @@
 <style>
   .container {
     grid-area: content;
-    padding: 150px 0 100px;
+    padding: 50px 0 50px;
   }
 </style>

@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="slider-icon-container">
-    <Icon name={icon} width="50px" height="40px" strokeWidth={1.5} stroke="var(--dGray)" />
+    <Icon name={icon} width="40px" height="40px" strokeWidth={1.5} stroke="var(--dGray)" />
   </div>
 
   <div class="slider-container">
@@ -89,6 +89,7 @@
     display: flex;
     align-items: center;
     font-style: italic;
+    font-family: "Poppins";
     font-size: 1.2rem;
     padding-left: 10px;
     pointer-events: all;
