@@ -40,6 +40,7 @@
     <path class="day-arc" d={daylightArc} />
     <text
       class="daylight-label"
+      font-family="Poppins"
       x={polar2cart($yScale(-8.5), $xScale(12)).x}
       y={polar2cart($yScale(-8.5), $xScale(12)).y}
       text-anchor="middle"

@@ -58,7 +58,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 1rem 2rem;
+    padding: 0 1rem 3.5rem;
     // border: solid 1px red;
 
     .link {

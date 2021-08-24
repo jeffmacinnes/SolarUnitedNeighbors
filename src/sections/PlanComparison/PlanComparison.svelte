@@ -92,7 +92,7 @@
 
   <div class="inputs-plans-container">
     <div class="inputs-container">
-      <h3 class="_heading3">Adjust your energy settings</h3>
+      <h3 class="_heading3 section-title">Adjust your energy settings</h3>
       <div class="sliders-container">
         <!-- INPUTS -->
         <Slider
@@ -115,7 +115,7 @@
 
     <div class="plans-container">
       <!-- PLANS -->
-      <h3 class="_heading3">Compare electric plans</h3>
+      <h3 class="_heading3 section-title">Compare electric plans</h3>
       <div class="plan-table-container">
         <PlanTable {bills} {plans} {planDefs} />
       </div>
@@ -124,7 +124,7 @@
 
   <!-- DAILY CHART GRAPHIC -->
   <div class="daily-chart-container">
-    <h3 class="_heading3 daily-chart-title">Daily net energy</h3>
+    <h3 class="_heading3 section-title daily-chart-title">Daily net energy</h3>
     <LayerCake
       data={currentDailyData}
       padding={{ bottom: 40, top: 20 }}
@@ -150,7 +150,7 @@
 
   <!-- SEASONAL CHART GRAPHIC -->
   <div class="seasonal-chart-container">
-    <h3 class="_heading3 seasonal-chart-title">Monthly net energy</h3>
+    <h3 class="_heading3 section-title seasonal-chart-title">Monthly net energy</h3>
     <LayerCake
       padding={{ top: 0, left: 20, right: 20, bottom: 80 }}
       data={currentMonthlyData}
@@ -193,6 +193,10 @@
     top: 0;
   }
 
+  .section-title {
+    font-size: 2rem;
+  }
+
   .seasonal-chart-container {
     position: relative;
     width: 100%;
@@ -221,7 +225,7 @@
       width: 100%;
 
       .plan-table-container {
-        padding: 0px 25px;
+        padding: 0px 0px 0px 25px;
       }
     }
   }

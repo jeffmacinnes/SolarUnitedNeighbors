@@ -54,6 +54,7 @@
     <!-- Month Axes -->
     {#each months as month}
       <text
+        font-family="Poppins"
         text-anchor="end"
         alignment-baseline="middle"
         x={$xScale(0) - radius * 2}
@@ -69,6 +70,7 @@
         opacity={monthIdx === null ? 1 : monthIdx === month.monthIdx ? 1 : 0}
       />
       <text
+        font-family="Poppins"
         text-anchor="start"
         alignment-baseline="middle"
         x={$xScale(23) + radius * 2}
@@ -81,8 +83,12 @@
     <!-- Time Axis  -->
     {#each xTickVals as xTick}
       <line x1={xTick.x1} y1={xTick.y1} x2={xTick.x2} y2={xTick.y2} />
-      <text x={xTick.xText} y={xTick.yText} text-anchor="middle" alignment-baseline="hanging"
-        >{xTick.text}</text
+      <text
+        x={xTick.xText}
+        y={xTick.yText}
+        font-family="Poppins"
+        text-anchor="middle"
+        alignment-baseline="hanging">{xTick.text}</text
       >
     {/each}
 

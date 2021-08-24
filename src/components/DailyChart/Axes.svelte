@@ -79,6 +79,7 @@
       <g>
         <line x1={tick.x1} x2={tick.x2} y1={tick.y1} y2={tick.y2} />
         <text
+          font-family="Poppins"
           transform="translate({tick.xText}, {tick.yText}) rotate({tick.textRotation})"
           text-anchor="middle">{tick.text}</text
         >
@@ -105,7 +106,8 @@
     {#each yTickVals as tick, i}
       <text
         transform="translate({tick.x}, {tick.y})"
-        font-size="12px"
+        font-size="11px"
+        font-family="Poppins"
         alignment-baseline="hanging"
         text-anchor={tick.anchor}
       >

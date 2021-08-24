@@ -142,7 +142,7 @@
     }
 
     .design-credit {
-      color: var(--lBlue);
+      color: var(--dGray);
 
       a {
         font-weight: 500;
