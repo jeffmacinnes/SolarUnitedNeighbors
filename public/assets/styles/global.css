@@ -222,4 +222,9 @@ svelte-scroller-background-container {
   ._quote-text {
     font-size: 1.9rem;
   }
+
+  ._caption-text {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 }

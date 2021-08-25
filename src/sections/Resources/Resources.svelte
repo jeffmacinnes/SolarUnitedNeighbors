@@ -75,4 +75,23 @@
       color: var(--text);
     }
   }
+
+  @media (max-width: 700px) {
+    #resources {
+      padding-bottom: 10rem;
+    }
+
+    .divider {
+      width: 80%;
+      border-bottom: solid 1px #ccc;
+      margin: 3rem auto;
+    }
+
+    .resource-content {
+      .link {
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+      }
+    }
+  }
 </style>
