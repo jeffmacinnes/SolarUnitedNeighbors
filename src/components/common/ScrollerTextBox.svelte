@@ -62,4 +62,20 @@
       box-shadow: 0 0 0 0 rgba(#ccc, 0);
     }
   }
+
+  @media (max-width: 700px) {
+    .scroller-text-container {
+      padding: 10px;
+
+      p {
+        font-size: 1.6rem;
+      }
+
+      .pulsing-arrow {
+        margin-top: 20px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 </style>

@@ -1,5 +1,6 @@
 <script>
   import { onMount, getContext } from "svelte";
+  import viewport from "stores/viewport.js";
   import { fade } from "svelte/transition";
   import { usageColor, generationColor } from "./dailyChartUtils";
 
@@ -26,9 +27,15 @@
   });
 
   $: showNet = chartState.net;
+
+  // position the legend
+  $: pos =
+    $viewport.width < 700
+      ? { x: 120, y: -10 } // mobile
+      : { x: 0, y: $height * 0.5 - 130 }; // default
 </script>
 
-<div class="legend-container" style="transform: translate(0, {$height * 0.5 - 130}px);">
+<div class="legend-container" style="transform: translate({pos.x}px, {pos.y}px);">
   {#if !showNet}
     <div transition:fade class="mask" />
   {/if}
@@ -39,6 +46,7 @@
   .legend-container {
     display: flex;
     justify-content: flex-end;
+    // border: solid 1px red;
   }
 
   .mask {

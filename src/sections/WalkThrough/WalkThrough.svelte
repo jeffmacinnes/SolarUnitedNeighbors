@@ -221,4 +221,16 @@
       box-shadow: 0 0 0 0 rgba(#ccc, 0);
     }
   }
+
+  @media (max-width: 700px) {
+    .chart-container {
+      transform: scale(0.63, 0.63);
+    }
+
+    [slot="foreground"] {
+      section {
+        width: 100%;
+      }
+    }
+  }
 </style>

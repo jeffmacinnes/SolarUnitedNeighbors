@@ -66,12 +66,13 @@
 <defs>
   <!-- Clip Path. When used, everything within this mask will be visible -->
   <clipPath id="cut-off-bottom">
-    <rect x={-$width / 2} y={-$height} width={$width} height={$height} />
+    <rect x={-$width} y={-$height} width={$width * 2} height={$height} />
   </clipPath>
 </defs>
 
 <g transform="translate({$width / 2}, {$height})">
-  <!-- <rect x={-$width / 2} y={-$height} width={$width} height={$height} fill="red" opacity=".3" /> -->
+  <!-- Helper to view clipping path defined above -->
+  <!-- <rect x={-$width} y={-$height} width={$width * 2} height={$height} fill="red" opacity=".3" /> -->
 
   <!-- X-axis -->
   <g class="axis x-axis">
