@@ -22,7 +22,7 @@
   }
 
   :global(.p-intro) {
-    font-family: "Roboto Condensed";
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
     font-size: 2.3rem;
@@ -32,5 +32,12 @@
 
   :global(strong) {
     color: var(--green);
+  }
+
+  @media (max-width: 700px) {
+    :global(.p-intro) {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
   }
 </style>

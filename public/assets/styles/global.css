@@ -25,6 +25,11 @@
   --dGray: #414141;
   --green: #00a6a6; /* or #5CA4A9 */
   --white: #fefefe;
+
+  /* Breakpoints */
+  --mobile-width: 480px;
+  --tablet-width: 900px;
+  --desktop-width: 1000px;
 }
 
 /* uncomment for debugging */
@@ -170,12 +175,12 @@ svelte-scroller-background-container {
   By putting in descending order of screen size, CSS precedence
   takes place and you don't need to specify a min-width
 */
+
 /* Tablet */
 @media (max-width: 1000px) {
   ._heading1 {
-    font-size: 6.2rem;
-    line-height: 6rem;
-    letter-spacing: 0.2rem;
+    font-size: 6rem;
+    line-height: 5.8rem;
   }
 }
 
@@ -187,8 +192,34 @@ svelte-scroller-background-container {
   }
 
   ._heading1 {
-    font-size: 4rem;
-    line-height: 3.9rem;
-    letter-spacing: 0.2rem;
+    font-size: 3.8rem;
+    line-height: 3.7rem;
+  }
+
+  ._heading2 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  .heading3 {
+  }
+
+  ._section-heading {
+    font-size: 1.3rem;
+    line-height: 2.6rem;
+  }
+
+  ._body-text {
+    font-size: 1.6rem;
+    line-height: 1.55;
+  }
+
+  ._body-text-bold {
+    font-size: 1.6rem;
+    line-height: 1.55;
+  }
+
+  ._quote-text {
+    font-size: 1.9rem;
   }
 }

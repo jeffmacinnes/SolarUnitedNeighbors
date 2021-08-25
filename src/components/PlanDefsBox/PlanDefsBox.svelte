@@ -42,4 +42,27 @@
       }
     }
   }
+
+  @media (max-width: 700px) {
+    .plan-defs-container {
+      margin: 0 0 5rem;
+    }
+
+    .plan-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0;
+      margin-bottom: 3rem;
+
+      .plan-name {
+        text-align: left;
+        font-size: 1.6rem;
+        padding: 0px;
+      }
+
+      .plan-def {
+        font-size: 1.3rem;
+      }
+    }
+  }
 </style>

@@ -63,4 +63,11 @@
     grid-area: content;
     margin-bottom: 50px;
   }
+
+  @media (max-width: 700px) {
+    .divider {
+      width: 100%;
+      margin: 4rem auto;
+    }
+  }
 </style>

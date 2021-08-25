@@ -32,4 +32,15 @@
     color: var(--lBlue);
     font-size: 1.9rem;
   }
+
+  @media (max-width: 700px) {
+    .figure-container {
+      width: 100%;
+      margin: 10px auto;
+    }
+
+    .title {
+      font-size: 1.4rem;
+    }
+  }
 </style>
