@@ -176,10 +176,6 @@
     min-height: 100vh;
   }
 
-  // * {
-  //   border: solid 1px red;
-  // }
-
   .daily-chart-container {
     position: relative;
     width: 100%;
@@ -227,6 +223,74 @@
       .plan-table-container {
         padding: 0px 0px 0px 25px;
       }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    #plan-comparison {
+      min-height: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .inputs-plans-container {
+      padding: 0px;
+
+      .inputs-container {
+        padding: 0px;
+
+        .sliders-container {
+          padding: 0px;
+          transform: translate(-20px, -20px) scale(0.8);
+        }
+      }
+
+      .plans-container {
+        padding: 0px;
+        .plan-table-container {
+          padding: 0px;
+          transform: translate(-40px, -20px) scale(0.8);
+        }
+      }
+    }
+
+    .daily-chart-container {
+      transform: translate(0, -100px) scale(0.8);
+
+      .daily-chart-title {
+        display: none;
+      }
+    }
+
+    .seasonal-chart-container {
+      display: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .inputs-plans-container {
+      flex-direction: column;
+
+      .inputs-container {
+        .sliders-container {
+          padding: 0px;
+          transform: translate(-20px, -40px) scale(0.7);
+        }
+      }
+
+      .plans-container {
+        transform: translate(0px, -70px);
+
+        .plan-table-container {
+          transform: translate(0px, -20px) scale(0.7);
+        }
+      }
+    }
+
+    .daily-chart-container {
+      transform: translate(0px, -200px) scale(0.55);
     }
   }
 </style>
