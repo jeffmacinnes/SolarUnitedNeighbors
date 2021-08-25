@@ -4,9 +4,18 @@
   import * as scroll from "svelte-scrollto";
   export let sectionNames;
 
+  let scrollY;
+
   // mobile menu styles
   let showMobileMenu = false;
-  const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
+  const handleMobileIconClick = () => {
+    showMobileMenu = !showMobileMenu;
+
+    // scroll down to put menu in viewport if not already
+    if (showMobileMenu & (scrollY < 262)) {
+      scroll.scrollTo({ offset: 262, duration: 500 });
+    }
+  };
 
   $: isMobile = $viewport.width < 900;
   $: mobileMenuIcon = showMobileMenu ? "x" : "menu";
@@ -31,6 +40,7 @@
   };
 </script>
 
+<svelte:window bind:scrollY />
 <nav>
   <div id="navbar">
     <!-- Logo -->
@@ -122,6 +132,12 @@
 
     span {
       color: var(--lOrange);
+    }
+  }
+
+  @media (max-width: 700px) {
+    h1 {
+      max-width: 250px;
     }
   }
 

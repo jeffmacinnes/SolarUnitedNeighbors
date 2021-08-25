@@ -43,8 +43,8 @@
 <div class="app-container">
   <Nav {sectionNames} />
   <Summary sectionText={docs.section1} />
-  <!-- <WalkThrough sectionText={docs.section2} {solarUtils} /> -->
-  <!-- <PlanComparison sectionText={docs.section3} {planDefs} {solarUtils} /> -->
+  <WalkThrough sectionText={docs.section2} {solarUtils} />
+  <PlanComparison sectionText={docs.section3} {planDefs} {solarUtils} />
   <Resources sectionText={docs.section4} />
   <Footer sectionText={docs.footer} />
 </div>

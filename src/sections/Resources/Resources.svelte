@@ -3,8 +3,6 @@
   import Icon from "components/common/Icon.svelte";
 
   export let sectionText;
-
-  $: console.log(sectionText);
 </script>
 
 <div class="divider" />
