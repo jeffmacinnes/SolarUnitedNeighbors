@@ -1,7 +1,10 @@
 import * as d3 from "d3";
 
-export const usageColor = "#2474ad";
-export const generationColor = "#ffc038";
+// export const usageColor = "#2474ad";
+// export const generationColor = "#ffc038";
+
+export const usageColor = "#ffb84d";
+export const generationColor = "#2474ad";
 
 export const colorScale = d3
   .scaleDiverging(t => d3.interpolateRgb(1 - t))

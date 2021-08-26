@@ -55,7 +55,7 @@
 
   .divider {
     width: 80%;
-    border-bottom: solid 1px #ccc;
+    // border-bottom: solid 1px #ccc;
     margin: 10rem auto;
   }
 

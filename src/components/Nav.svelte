@@ -11,7 +11,7 @@
   const handleMobileIconClick = () => {
     showMobileMenu = !showMobileMenu;
 
-    // scroll down to put menu in viewport if not already
+    // scroll down to put mobile menu in viewport if not already
     if (showMobileMenu & (scrollY < 262)) {
       scroll.scrollTo({ offset: 262, duration: 500 });
     }
@@ -62,7 +62,7 @@
         </div>
       {:else}
         {#each navLinks as navLink}
-          <div on:click={() => scrollTo(navLink.href, 0)}>{navLink.label}</div>
+          <div on:click={() => scrollTo(navLink.href, -50)}>{navLink.label}</div>
         {/each}
       {/if}
     </div>
