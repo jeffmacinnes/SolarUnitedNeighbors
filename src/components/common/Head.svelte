@@ -1,16 +1,22 @@
+<script>
+  export let title;
+  export let desc;
+  export let url;
+</script>
+
 <svelte:head>
-  <title>Texas Solar Homeowners Savings Report</title>
+  <title>{title}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="" />
+  <meta name="description" content={desc} />
   <meta name="author" content="" />
   <meta name="news_keywords" content="" />
 
-  <meta property="og:title" content="" />
-  <meta property="og:site_name" content="" />
-  <meta property="og:url" content="" />
-  <meta property="og:description" content="" />
+  <meta property="og:title" content={title} />
+  <meta property="og:site_name" content={title} />
+  <meta property="og:url" content={url} />
+  <meta property="og:description" content={desc} />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_US" />
 

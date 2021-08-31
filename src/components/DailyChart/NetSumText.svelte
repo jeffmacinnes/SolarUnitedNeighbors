@@ -1,14 +1,20 @@
 <script>
   import { getContext } from "svelte";
   import { fade } from "svelte/transition";
+  import * as d3 from "d3";
 
   export let chartState;
-  export let netSum;
+  export let netDailySum;
+  export let netAggSum; // total kWh aggregated over the current interval (annual or monthly)
   export let currentMonthDisplay;
   export let delay = 0;
   const { height } = getContext("LayerCake");
 
   $: showNet = chartState.net;
+  $: aggText =
+    currentMonthDisplay !== null
+      ? `${d3.format(",")(Math.round(netAggSum))} kWh month total`
+      : `${d3.format(",")(Math.round(netAggSum))} kWh annually`;
 </script>
 
 {#if showNet}
@@ -17,10 +23,11 @@
     class="net-sum-container"
     style="transform: translate(0px, {$height - 125}px)"
   >
-    <div class="sum">{Math.round(netSum)} kWh</div>
+    <div class="sum">{Math.round(netDailySum)} kWh</div>
     <div class="units">
       average daily usage<br />{currentMonthDisplay !== null ? `in ${currentMonthDisplay}` : ""}
     </div>
+    <div class="aggregate">{aggText}</div>
     <div class="line-break" />
   </div>
 {/if}
@@ -38,8 +45,12 @@
     font-family: "Poppins";
     font-weight: bold;
     font-size: 3rem;
-    padding: 3px;
     color: var(--orange);
+  }
+
+  .aggregate {
+    padding-top: 5px;
+    font-weight: bold;
   }
 
   .line-break {
@@ -54,5 +65,6 @@
     color: var(--dGray);
     font-style: normal;
     line-height: 1.3;
+    padding-bottom: 3px;
   }
 </style>

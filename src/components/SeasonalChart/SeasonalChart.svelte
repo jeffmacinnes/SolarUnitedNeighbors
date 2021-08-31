@@ -21,7 +21,7 @@
     })
     .map((d, i) => {
       const xPos = $xScale(d.ts) - $xScale.bandwidth() / 2;
-      const yPos = $yScale(0) + radius * 2;
+      const yPos = $yScale(11) + radius * 2;
       return {
         x1: xPos,
         y1: yPos + 1,

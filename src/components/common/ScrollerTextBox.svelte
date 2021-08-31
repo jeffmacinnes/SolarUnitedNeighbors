@@ -45,7 +45,7 @@
       height: 35px;
       border-radius: 50%;
       box-shadow: 0 0 0 0 rgba(#ccc, 0.5);
-      animation: pulsing 2s infinite;
+      // animation: pulsing 2s infinite;
     }
   }
 

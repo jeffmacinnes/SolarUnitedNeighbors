@@ -35,9 +35,10 @@
   $: sectionNames = docs["navigation"].map(d => d.title);
 
   $: planDefs = docs.section1.planDefinitions;
+  $: header = docs.header[0];
 </script>
 
-<Head />
+<Head title={header.title} desc={header.description} url={header.url} />
 
 <Hero sectionText={docs.hero} />
 <div class="app-container">

@@ -1,6 +1,6 @@
 <script>
   import { getContext } from "svelte";
-  import { draw, fade } from "svelte/transition";
+  import { draw } from "svelte/transition";
   import { linear } from "svelte/easing";
   import { line } from "d3-shape";
   import { polar2cart } from "../utils.js";
@@ -44,8 +44,8 @@
   });
 
   // --- Animation fns
-  const inStepDuration = 100;
-  const outStepDuration = 50;
+  const inStepDuration = 50;
+  const outStepDuration = inStepDuration;
   const buildIn = (node, { index = 0 }) => {
     // stagger add each element based on index position
     return {

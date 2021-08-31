@@ -10,69 +10,44 @@ npm run dev
 
 This will start a dev server running on [localhost:5000](http://localhost:5000). The dev server will watch for changes to the `src` and `public` directories. Editing files, or adding/deleting files, will automatically recompile and update the browser.
 
-## Build/SSR/Deploy
+## Deploy
 
-To build:
+The page is set to be deployed from the 'docs' folder in the root level of this repository.
+
+First, create the bundled site:
 
 ```bash
 npm run build
 ```
 
-This will bundle the app and write to `public/build`
-
-If you want to create an SSR version, you can next run:
-
-```bash
-npm run ssr
-```
-
-This will generate a directory called `ssr` with server-side rendered static-hostable app.
-
-If you want to deploy to Github Pages:
+deploy to `docs` folder and push to github
 
 ```bash
 make github
 ```
 
-This will copy the contents of the `ssr` dir to `docs` and push an update to the github repo
+## Updating site content
 
-## Style
+Most of the copy on the site is hosted via google docs: [Content Doc](https://docs.google.com/document/d/1T-nG-IWIVK7QfBk_0O2Dc-nDyL-cGhLDcyaIyTa8sgs/edit)
 
-This template is set up with a preprocessor for `SCSS`. To use in a component file:
+The copy is organized using a special syntax called ArchieML that allows it to be converted to json and injected into the site. Read more on ArchieML [here](http://archieml.org).
 
+Once changes are made to the google doc, they need to be pulled down into the site. From the root level of the repository, run:
+
+```bash
+npm run gdoc
 ```
-<style lang="scss">
-  ...
-</style>
 
-```
+This will convert the googledoc to json and store the file at `/src/data/doc.json`
 
-## Google Docs and Sheets
+Refresh the development server (or rebuild the site) to see the updated content doc reflected in the site.
 
-With the help of [ArchieML](http://archieml.org/), this repo is set up to ingest content from google docs or sheets. E.g. use Google Docs as a CMS for all page copy, or use Google Sheets as a data store.
+## Data
 
-- Create a Google Doc or Sheet
-- Click `Share` button -> advanced -> Change... -> to "Anyone with this link"
-- In the address bar, grab the ID - eg. ...com/document/d/**1IiA5a5iCjbjOYvZVgPcjGzMy5PyfCzpPF-LnQdCdFI0**/edit
-- paste in the ID above into `config.json`, and set the filepath to where you want the file saved
-- If you want to do a Google Sheet, be sure to include the `gid` value in the url as well
+The interactive data visualizations on this site are supported behind the scenes by custom functions and utilities hosted via observableHQ notebooks: [helper tools](https://observablehq.com/d/75836c71d23e67a3)
 
-Next, run `npm run gdoc` to pull the latest updates from google drive and save them to the file(s) specified in `config.json`.
+The site imports a specific version number of this notebook, in order to avoid inadvertently messing up the site by modifying the notebook. If you _want_ the site to read the updated notebook, get the latest version number and update the notebook url in `/src/App.svelte`
 
-The files can be imported in your JS.
+## misc
 
-## Common components
-
-located in `src/components/common`
-
-- `Icon.svelte` : integration with Feather Icons. Use it to import common icons into your app like:
-
-  ```javascript
-  <script>
-    import Icon from "./components/common/Icon.svelte";
-  </script>
-
-  <Icon name="airplay" strokeWidth={2} stroke="coral" />
-  ```
-
-- `Head.svelte` : Place to put meta tags (and other head things). This will be injected into the `<head></head>` tags during build stage.
+This repo is adapted from the excellent svelte template that The Pudding put together: https://github.com/the-pudding/svelte-starter

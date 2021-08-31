@@ -1,6 +1,6 @@
 <script>
   import { LayerCake, Svg, Html } from "layercake";
-  import { sum, range } from "d3-array";
+  import { sum, range, rollup } from "d3-array";
   import { scaleBand } from "d3-scale";
   import { deg2rad } from "components/utils";
   import SectionHeading from "components/common/SectionHeading.svelte";
@@ -32,6 +32,7 @@
     generation: true,
     net: true,
   };
+  let netAggSum = 0;
 
   // Slider Defaults
   let houseSize = [3];
@@ -40,11 +41,34 @@
 
   // Seasonal Variation chart vars (null if nothing selected)
   let monthIdx = null;
-  let tsIdx = null;
   let currentMonthDisplay = null;
 
   const handleMouse = e => {
     monthIdx = e;
+  };
+
+  const sumNetBy = (monthlyData, months, monthIdx) => {
+    /* calculate the sum net (in kWh) given current slider params
+      If monthIdx !== null, it will sum net over selected month only
+      If monthIdx === null, it will sum net over entire year
+    */
+    let avgNetByMonth = rollup(
+      monthlyData,
+      v => sum(v, v => v.net),
+      d => d.monthIdx
+    );
+    if (monthIdx !== null) {
+      let dailyAvg = avgNetByMonth.get(monthIdx);
+      let daysInMonth = months.find(d => d.monthIdx === monthIdx).daysInMonth;
+      let monthlySum = dailyAvg * daysInMonth;
+      return monthlySum;
+    } else {
+      let sumByMonth = months.map(d => {
+        return avgNetByMonth.get(d.monthIdx) * d.daysInMonth;
+      });
+      let yearlySum = sum(sumByMonth);
+      return yearlySum;
+    }
   };
 
   $: {
@@ -76,13 +100,16 @@
         daylight = { sunrise: 6, sunset: 19 };
         bills = generateAnnualBills(monthlyBills).map(d => ({ ...d, billType: "annual" }));
       }
+
+      // Sum the net over the specified interval (based on whether monthIdx is null or not)
+      netAggSum = sumNetBy(monthlyData, months, monthIdx);
     } else {
       currentDailyData = [];
       currentMonthlyData = [];
+      netAggSum = 0;
     }
   }
-  $: netSum = currentDailyData ? sum(currentDailyData, d => d.net) : 0;
-
+  $: netDailySum = currentDailyData ? sum(currentDailyData, d => d.net) : 0;
   $: toolTips = sectionText.sliderToolTips[0];
 </script>
 
@@ -143,7 +170,7 @@
 
       <Html>
         <NetLegend id="plancomparison-legend" {chartState} />
-        <NetSumText {chartState} {netSum} {currentMonthDisplay} delay={1200} />
+        <NetSumText {chartState} {netDailySum} {netAggSum} {currentMonthDisplay} delay={1200} />
       </Html>
     </LayerCake>
   </div>
@@ -158,7 +185,7 @@
       xRange={[-270, 270]}
       xDomain={currentMonthlyData.map(d => d.ts)}
       yScale={scaleBand().paddingInner(0.05).align(0.5)}
-      yDomain={range(months.length)}
+      yDomain={range(months.length).reverse()}
     >
       <Svg>
         <SeasonalChart {months} {handleMouse} {monthIdx} />

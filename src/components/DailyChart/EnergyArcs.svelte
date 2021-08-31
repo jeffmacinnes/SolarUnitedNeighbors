@@ -7,6 +7,7 @@
 
   const arcFn = arc();
   const { data, xScale, yScale, width, height } = getContext("LayerCake");
+  const animationSpeed = 50; // ms delay between each stagger
 
   $: showUsage = chartState.usage;
   $: showGeneration = chartState.generation;
@@ -43,14 +44,14 @@
   const buildIn = (node, { index = 0 }) => {
     // stagger add each element based on index position
     return {
-      delay: index * 100,
+      delay: index * animationSpeed,
       css: t => `opacity: ${t > 0 ? 1 : 0}`,
     };
   };
   const buildOut = (node, { index = 0 }) => {
     // stagger remove each element based on index position. First in/Last out.
     return {
-      delay: ($data.length - index) * 50,
+      delay: (($data.length - index) * animationSpeed) / 2,
       css: t => `opacity: ${t < 1 ? 0 : 1}`,
     };
   };

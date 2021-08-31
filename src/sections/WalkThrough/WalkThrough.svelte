@@ -37,8 +37,9 @@
     monthStr: "Jun",
     date: dayjs("2019-06-01"),
   }));
-  let currentData = tweened(startingData, { duration: 450, easing: cubicInOut });
+  let currentData = tweened(startingData, { duration: 300, easing: cubicInOut });
   let daylight = { sunrise: 6, sunset: 20 };
+  let netAggSum = 0;
 
   $: {
     if (solarUtils.loaded) {
@@ -77,7 +78,8 @@
       };
     }
   }
-  $: netSum = $currentData ? sum($currentData, d => d.net) : 0;
+  $: netDailySum = $currentData ? sum($currentData, d => d.net) : 0;
+  $: netAggSum = netDailySum * 365;
 
   // --- Scroll state
   let index, offset, progress, count;
@@ -121,7 +123,13 @@
 
           <Html>
             <NetLegend {chartState} id="walkthrough-legend" />
-            <NetSumText {chartState} {netSum} currentMonthDisplay={null} delay={1200} />
+            <NetSumText
+              {chartState}
+              {netDailySum}
+              {netAggSum}
+              currentMonthDisplay={null}
+              delay={1200}
+            />
           </Html>
         </LayerCake>
       </div>
@@ -175,7 +183,7 @@
       }
 
       &:last-of-type {
-        margin: 10vh auto;
+        margin: 100vh auto;
       }
     }
   }
