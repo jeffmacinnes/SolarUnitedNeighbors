@@ -40,7 +40,7 @@
 
 <style lang="scss">
   .fg {
-    background-image: url("./assets/images/hero2_fg.png");
+    background-image: url("./assets/images/hero_mosaic_fg.png");
     background-color: transparent;
   }
 
@@ -58,7 +58,7 @@
   }
 
   .bg {
-    background-image: url("./assets/images/hero2_bg.png");
+    background-image: url("./assets/images/hero_mosaic_bg.jpg");
   }
 
   .full-image {
