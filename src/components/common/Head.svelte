@@ -20,7 +20,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_US" />
 
-  <meta property="og:image" content="./assets/images/socialImg.png" />
+  <meta property="og:image" content="assets/images/socialImg.png" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -30,7 +30,7 @@
   <meta name="twitter:creator" content="" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={desc} />
-  <meta name="twitter:image:src" content="./assets/images/twitterImage.png" />
+  <meta name="twitter:image:src" content="assets/images/twitterImage.png" />
 
   <meta name="robots" content="max-image-preview:large" />
 
