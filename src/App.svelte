@@ -12,7 +12,7 @@
 
   // Load the Observable runtime and inspector.
   import { Runtime } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-  import notebook from "https://api.observablehq.com/d/75836c71d23e67a3@1274.js?v=3";
+  import notebook from "https://api.observablehq.com/d/75836c71d23e67a3@1294.js?v=3";
   const module = new Runtime().module(notebook);
 
   let solarUtils = { loaded: false };
