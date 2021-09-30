@@ -33,8 +33,6 @@
     name="twitter:image"
     content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/twitterImage.jpg"
   />
-
-  <meta name="robots" content="max-image-preview:large" /> -->
-
-  <link rel="canonical" href="" />
+  <meta name="robots" content="max-image-preview:large" /> 
+  <link rel="canonical" href="" /> -->
 </svelte:head>
