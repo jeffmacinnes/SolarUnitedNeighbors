@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>{title}</title>
-  <meta charset="utf-8" />
+  <!-- <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="description" content={desc} />
@@ -34,7 +34,7 @@
     content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/twitterImage.jpg"
   />
 
-  <meta name="robots" content="max-image-preview:large" />
+  <meta name="robots" content="max-image-preview:large" /> -->
 
   <link rel="canonical" href="" />
 </svelte:head>
