@@ -22,7 +22,7 @@
 
   <meta
     property="og:image"
-    content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/socialImg.png"
+    content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/socialImg.jpg"
   />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
@@ -35,7 +35,7 @@
   <meta name="twitter:description" content={desc} />
   <meta
     name="twitter:image"
-    content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/twitterImage.png"
+    content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/twitterImage.jpg"
   />
 
   <meta name="robots" content="max-image-preview:large" />
