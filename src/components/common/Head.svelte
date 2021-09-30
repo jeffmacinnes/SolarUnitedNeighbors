@@ -34,7 +34,7 @@
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={desc} />
   <meta
-    name="twitter:image:src"
+    name="twitter:image"
     content="https://www.solarunitedneighbors.org/TXRateStudy/assets/images/twitterImage.png"
   />
 
