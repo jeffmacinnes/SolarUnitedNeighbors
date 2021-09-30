@@ -29,7 +29,7 @@
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="" />
+  <meta name="twitter:site" content={url} />
   <meta name="twitter:creator" content="" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={desc} />
